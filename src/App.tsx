@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Shield, Euro, Truck, Package, Users, CheckCircle, Sofa, Trash2, Warehouse, ChevronRight, MessageCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Shield, Euro, Truck, Package, Users, CheckCircle, Sofa, Trash2, Warehouse, ChevronRight, MessageCircle, Facebook } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -282,7 +282,7 @@ function App() {
 
                 <div className="space-y-6">
                   <a href="tel:+420774876759" className="flex items-center space-x-4 group">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                       <Phone className="w-6 h-6" />
                     </div>
                     <div>
@@ -292,7 +292,7 @@ function App() {
                   </a>
 
                   <a href="mailto:stehovanifenix@gmail.com" className="flex items-center space-x-4 group">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                       <Mail className="w-6 h-6" />
                     </div>
                     <div>
@@ -305,9 +305,9 @@ function App() {
                     href="https://wa.me/420774876759"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-4 group bg-green-50 p-4 rounded-lg hover:bg-green-100 transition-colors"
+                    className="flex items-center space-x-4 group"
                   >
-                    <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                       <MessageCircle className="w-6 h-6" />
                     </div>
                     <div>
@@ -382,13 +382,24 @@ function App() {
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <img 
-                src="/Stěhování-Fénix-logo.jpg" 
-                alt="Logo Stěhování Fénix" 
-                className="h-10 w-auto object-contain rounded" 
-              />
-              <span className="text-2xl font-bold">Stěhování Fénix</span>
+            <div className="flex items-center space-x-6 mb-4 md:mb-0">
+              <div className="flex items-center space-x-2">
+                <img 
+                  src="/Stěhování-Fénix-logo.jpg" 
+                  alt="Logo Stěhování Fénix" 
+                  className="h-10 w-auto object-contain rounded" 
+                />
+                <span className="text-2xl font-bold">Stěhování Fénix</span>
+              </div>
+              <a 
+                href="https://www.facebook.com/profile.php?id=61583368424282" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-orange-500 transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-6 h-6" />
+              </a>
             </div>
             <div className="text-gray-400 text-sm">
               © 2024 Stěhování Fénix. Všechna práva vyhrazena.
@@ -397,16 +408,7 @@ function App() {
         </div>
       </footer>
 
-      {/* Floating WhatsApp Button */}
-      <a
-        href="https://wa.me/420774876759"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white shadow-2xl hover:scale-110 transition-transform z-40 animate-bounce"
-        aria-label="WhatsApp"
-      >
-        <MessageCircle className="w-8 h-8" />
-      </a>
+
     </div>
   );
 }
