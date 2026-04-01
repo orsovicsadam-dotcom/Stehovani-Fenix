@@ -35,9 +35,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center transform hover:scale-110 transition-transform">
-                <Truck className="w-6 h-6 text-white" />
-              </div>
+              <img 
+                src="/Stěhování-Fénix-logo.jpg" 
+                alt="Logo Stěhování Fénix" 
+                className="h-12 w-auto object-contain transform hover:scale-110 transition-transform rounded" 
+              />
               <span className={`text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent`}>
                 Stěhování Fénix
               </span>
@@ -381,9 +383,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
-                <Truck className="w-6 h-6 text-white" />
-              </div>
+              <img 
+                src="/Stěhování-Fénix-logo.jpg" 
+                alt="Logo Stěhování Fénix" 
+                className="h-10 w-auto object-contain rounded" 
+              />
               <span className="text-2xl font-bold">Stěhování Fénix</span>
             </div>
             <div className="text-gray-400 text-sm">
