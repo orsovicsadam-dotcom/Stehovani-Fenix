@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, Shield, Euro, Truck, Package, Users, CheckCircle, Sofa, Trash2, Warehouse, ChevronRight, MessageCircle, Facebook } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { Link, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,6 +45,11 @@ function App() {
                 Stěhování Fénix
               </span>
             </div>
+            <div className="hidden md:flex items-center space-x-8 text-gray-700 font-semibold">
+              <Link to="/" className="hover:text-orange-600 transition-colors">Úvod</Link>
+              <Link to="/sluzby" className="hover:text-orange-600 transition-colors">Naše služby</Link>
+              <Link to="/cenik" className="hover:text-orange-600 transition-colors">Ceník</Link>
+            </div>
             <button
               onClick={scrollToContact}
               className="hidden sm:block bg-gradient-to-r from-orange-500 to-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-300"
@@ -54,8 +60,11 @@ function App() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-orange-50 via-white to-red-50">
+      <Routes>
+        <Route path="/" element={
+          <>
+            {/* Hero Section */}
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-orange-50 via-white to-red-50">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-1/2 -right-1/4 w-96 h-96 bg-gradient-to-br from-orange-400/20 to-red-500/20 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute -bottom-1/2 -left-1/4 w-96 h-96 bg-gradient-to-br from-red-400/20 to-orange-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -377,6 +386,23 @@ function App() {
           </div>
         </div>
       </section>
+    </>
+  } />
+        <Route path="/sluzby" element={
+          <div className="pt-32 pb-20 px-4 min-h-screen flex flex-col items-center justify-center bg-gray-50">
+            <h1 className="text-4xl font-bold mb-6">Naše služby</h1>
+            <p className="text-xl text-gray-600 mb-8">Momentálně na obsahu pro vás pracujeme.</p>
+            <Link to="/" className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-3 rounded-lg font-bold shadow-lg">Zpět na úvod</Link>
+          </div>
+        } />
+        <Route path="/cenik" element={
+          <div className="pt-32 pb-20 px-4 min-h-screen flex flex-col items-center justify-center bg-gray-50">
+            <h1 className="text-4xl font-bold mb-6">Ceník služeb</h1>
+            <p className="text-xl text-gray-600 mb-8">Momentálně na obsahu pro vás pracujeme.</p>
+            <Link to="/" className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-3 rounded-lg font-bold shadow-lg">Zpět na úvod</Link>
+          </div>
+        } />
+      </Routes>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
