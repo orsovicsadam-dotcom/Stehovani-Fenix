@@ -281,28 +281,28 @@ function App() {
                 </p>
 
                 <div className="space-y-6">
-                  <div className="flex items-center space-x-4 group">
+                  <a href="tel:+420774876759" className="flex items-center space-x-4 group">
                     <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                       <Phone className="w-6 h-6" />
                     </div>
                     <div>
                       <div className="text-sm text-gray-500">Telefon</div>
-                      <div className="text-lg font-semibold text-gray-900">+420 XXX XXX XXX</div>
+                      <div className="text-lg font-semibold text-gray-900">+420 774 876 759</div>
                     </div>
-                  </div>
+                  </a>
 
-                  <div className="flex items-center space-x-4 group">
+                  <a href="mailto:stehovanifenix@gmail.com" className="flex items-center space-x-4 group">
                     <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                       <Mail className="w-6 h-6" />
                     </div>
                     <div>
                       <div className="text-sm text-gray-500">Email</div>
-                      <div className="text-lg font-semibold text-gray-900">info@stehovani-fenix.cz</div>
+                      <div className="text-lg font-semibold text-gray-900">stehovanifenix@gmail.com</div>
                     </div>
-                  </div>
+                  </a>
 
                   <a
-                    href="https://wa.me/420XXXXXXXXX"
+                    href="https://wa.me/420774876759"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-4 group bg-green-50 p-4 rounded-lg hover:bg-green-100 transition-colors"
@@ -347,7 +347,7 @@ function App() {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                    placeholder="+420 XXX XXX XXX"
+                    placeholder="+420 774 876 759"
                   />
                 </div>
 
@@ -399,7 +399,7 @@ function App() {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/420XXXXXXXXX"
+        href="https://wa.me/420774876759"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-8 right-8 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white shadow-2xl hover:scale-110 transition-transform z-40 animate-bounce"
