@@ -6,6 +6,7 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -476,6 +477,61 @@ function App() {
                 </button>
               </form>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
+            Často kladené <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">otázky</span>
+          </h2>
+          
+          <div className="space-y-4">
+            {[
+              {
+                q: "Kolik stojí stěhování?",
+                a: "Cena závisí na čase, vzdálenosti, množství věcí a náročnosti zakázky."
+              },
+              {
+                q: "Jak dlouho dopředu objednat?",
+                a: "Individuálně. Často je možné zajistit stěhování i ve stejný den."
+              },
+              {
+                q: "Stěhujete o víkendech a svátcích?",
+                a: "Ano, pracujeme i o víkendech, svátcích a po domluvě i v noci."
+              },
+              {
+                q: "Jak řešíte těžké věci?",
+                a: "Individuálně podle váhy a podmínek. Na základě informací uděláme odhad ceny."
+              },
+              {
+                q: "Jak probíhá objednávka?",
+                a: "Zavoláte nebo napíšete, popíšete zakázku a my připravíme odhad ceny."
+              },
+              {
+                q: "Je cena pevná?",
+                a: "Pevná cena je možná, ale bývá vyšší. Obvykle pracujeme s odhadem."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="border border-gray-200 rounded-xl overflow-hidden">
+                <button
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  className="w-full flex items-center justify-between p-5 text-left bg-white hover:bg-gray-50 transition-colors"
+                >
+                  <span className="font-bold text-gray-900">{faq.q}</span>
+                  <ChevronRight className={`w-5 h-5 text-orange-500 transition-transform duration-300 ${openFaq === index ? 'rotate-90' : ''}`} />
+                </button>
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+                >
+                  <div className="p-5 pt-0 text-gray-600 leading-relaxed border-t border-gray-50">
+                    {faq.a}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
