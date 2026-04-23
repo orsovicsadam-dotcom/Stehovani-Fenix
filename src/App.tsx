@@ -322,6 +322,79 @@ function App() {
         </div>
       </section>
 
+      {/* Realizations Showcase */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Ukázky <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">realizací</span>
+            </h2>
+            <p className="text-xl text-gray-600">
+              Reálné ukázky naší práce – vyklízení, montáže i přeprava.
+            </p>
+          </div>
+
+          <div className="space-y-16">
+            {/* Block 1: Vyklízení prostor */}
+            <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+              <h3 className="text-2xl font-bold mb-8 text-gray-900">Vyklízení prostor</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                {[
+                  { src: '/before1.jpeg', label: 'PŘED' },
+                  { src: '/after1.jpeg', label: 'PO' },
+                  { src: '/before3.jpeg', label: 'PŘED' },
+                  { src: '/after3.jpeg', label: 'PO' }
+                ].map((img, i) => (
+                  <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-md">
+                    <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
+                    <span className="absolute top-2 left-2 bg-black/60 text-white text-xs font-bold px-2 py-1 rounded">
+                      {img.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-gray-600 text-lg">
+                Kompletní vyklizení prostor včetně odvozu a ekologické likvidace.
+              </p>
+            </div>
+
+            {/* Block 2: Montáž nábytku */}
+            <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+              <h3 className="text-2xl font-bold mb-8 text-gray-900">Montáž nábytku</h3>
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                {[
+                  { src: '/montage-before.jpeg', label: 'PŘED' },
+                  { src: '/montage-after.jpeg', label: 'PO' }
+                ].map((img, i) => (
+                  <div key={i} className="relative aspect-[16/9] md:aspect-[4/3] rounded-xl overflow-hidden shadow-md">
+                    <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
+                    <span className="absolute top-2 left-2 bg-black/60 text-white text-xs font-bold px-2 py-1 rounded">
+                      {img.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-gray-600 text-lg">
+                Demontáž, převoz a opětovná montáž nábytku na nové adrese.
+              </p>
+            </div>
+
+            {/* Block 3: Přeprava */}
+            <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+              <h3 className="text-2xl font-bold mb-8 text-gray-900">Přeprava</h3>
+              <div className="max-w-3xl mx-auto mb-6">
+                <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden shadow-md">
+                  <img src="/transport2.jpeg" alt="Přeprava" className="w-full h-full object-cover" />
+                </div>
+              </div>
+              <p className="text-gray-600 text-lg text-center">
+                Bezpečný převoz vybavení a nábytku pomocí profesionálně vybaveného vozu.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Reviews Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
