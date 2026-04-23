@@ -1,12 +1,17 @@
 import { Phone, Mail, MapPin, Shield, Euro, Truck, Package, Users, CheckCircle, Sofa, Trash2, Warehouse, ChevronRight, MessageCircle, Facebook } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route, useLocation } from 'react-router-dom';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -545,10 +550,216 @@ function App() {
           </div>
         } />
         <Route path="/cenik" element={
-          <div className="pt-32 pb-20 px-4 min-h-screen flex flex-col items-center justify-center bg-gray-50">
-            <h1 className="text-4xl font-bold mb-6">Ceník služeb</h1>
-            <p className="text-xl text-gray-600 mb-8">Momentálně na obsahu pro vás pracujeme.</p>
-            <Link to="/" className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-3 rounded-lg font-bold shadow-lg">Zpět na úvod</Link>
+          <div className="pt-32 pb-20 bg-gray-50 min-h-screen">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                  Ceník <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">stěhování</span>
+                </h1>
+                <div className="max-w-2xl mx-auto space-y-4">
+                  <p className="text-xl text-gray-600 leading-relaxed">
+                    Cena stěhování se vždy odvíjí od konkrétní zakázky. Záleží na vzdálenosti, čase, množství věcí a náročnosti práce.
+                  </p>
+                  <p className="text-lg font-semibold text-orange-600">
+                    Níže najdete orientační ceník pro lepší představu.
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-12">
+                {/* SECTION 1: DOPRAVA */}
+                <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600">
+                      <Truck className="w-6 h-6" />
+                    </div>
+                    <h2 className="text-2xl font-bold text-gray-900">Doprava</h2>
+                  </div>
+                  <ul className="space-y-4 text-lg">
+                    <li className="flex justify-between items-center border-b border-gray-50 pb-4">
+                      <span className="text-gray-600">Praha</span>
+                      <span className="font-bold text-gray-900 text-right">přistavení vozidla zdarma</span>
+                    </li>
+                    <li className="flex justify-between items-center border-b border-gray-50 pb-4">
+                      <span className="text-gray-600">Mimo Prahu</span>
+                      <span className="font-bold text-orange-600 text-right">17 Kč / km</span>
+                    </li>
+                    <li className="flex justify-between items-center">
+                      <span className="text-gray-600">Po Evropě</span>
+                      <span className="font-bold text-orange-600 text-right">19 Kč / km <span className="text-sm font-normal text-gray-400">+ mýtné a poplatky</span></span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* SECTION 2: PRACOVNÍCI */}
+                <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600">
+                      <Users className="w-6 h-6" />
+                    </div>
+                    <h2 className="text-2xl font-bold text-gray-900">Sazby za pracovníky</h2>
+                  </div>
+                  <div className="space-y-6">
+                    <div className="bg-gray-50 p-6 rounded-2xl">
+                      <h3 className="font-bold text-gray-900 mb-4 flex items-center space-x-2">
+                        <Truck className="w-5 h-5 text-orange-500" />
+                        <span>Auto + řidič</span>
+                      </h3>
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-600">první hodina</span>
+                          <span className="font-bold text-gray-900">1500 Kč</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-600">každá další hodina</span>
+                          <span className="font-bold text-orange-600">1000 Kč</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="grid sm:grid-cols-3 gap-4">
+                      {[
+                        { label: 'Dva pracovníci', price: '1100 Kč / hodina' },
+                        { label: 'Tři pracovníci', price: '1500 Kč / hodina' },
+                        { label: 'Čtyři pracovníci', price: '1900 Kč / hodina' }
+                      ].map((item, index) => (
+                        <div key={index} className="border border-gray-100 p-4 rounded-xl text-center">
+                          <div className="text-sm text-gray-500 mb-1">{item.label}</div>
+                          <div className="font-bold text-gray-900">{item.price}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* SECTION 3: TĚŽKÁ BŘEMENA */}
+                <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600">
+                      <Package className="w-6 h-6" />
+                    </div>
+                    <h2 className="text-2xl font-bold text-gray-900">Těžká břemena</h2>
+                  </div>
+                  <ul className="space-y-4 text-lg">
+                    <li className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-50 pb-4">
+                      <span className="text-gray-600">100–199 kg</span>
+                      <span className="font-bold text-gray-900 text-right">1200 Kč <span className="text-sm font-normal text-gray-400">+ 300 Kč za patro nebo delší přenos</span></span>
+                    </li>
+                    <li className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-50 pb-4">
+                      <span className="text-gray-600">200–299 kg</span>
+                      <span className="font-bold text-gray-900 text-right">2400 Kč <span className="text-sm font-normal text-gray-400">+ 400 Kč za patro</span></span>
+                    </li>
+                    <li className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-50 pb-4">
+                      <span className="text-gray-600">300–399 kg</span>
+                      <span className="font-bold text-gray-900 text-right">3500 Kč <span className="text-sm font-normal text-gray-400">+ 500 Kč za patro</span></span>
+                    </li>
+                    <li className="flex justify-between items-center">
+                      <span className="text-gray-600">Nad 400 kg</span>
+                      <span className="font-bold text-orange-600 text-right">individuální nacenění</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* SECTION 4: OBALOVÝ MATERIÁL */}
+                <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600">
+                      <Package className="w-6 h-6" />
+                    </div>
+                    <h2 className="text-2xl font-bold text-gray-900">Obalový materiál</h2>
+                  </div>
+                  <ul className="space-y-4 text-lg">
+                    <li className="flex justify-between items-center border-b border-gray-50 pb-4">
+                      <span className="text-gray-600">Strečová fólie</span>
+                      <span className="font-bold text-gray-900 text-right">300 Kč</span>
+                    </li>
+                    <li className="flex justify-between items-center">
+                      <span className="text-gray-600">Ostatní materiál (bublinková fólie apod.)</span>
+                      <span className="font-bold text-orange-600 text-right">dle domluvy</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* SECTION 5: DALŠÍ SLUŽBY A INFORMACE */}
+                <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600">
+                      <CheckCircle className="w-6 h-6" />
+                    </div>
+                    <h2 className="text-2xl font-bold text-gray-900">Další informace</h2>
+                  </div>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {[
+                      'Cena zahrnuje přistavení vozidla (v Praze zdarma)',
+                      'Neúčtujeme příplatky za víkendy ani svátky',
+                      'Montáž a demontáž nábytku je zahrnuta v ceně',
+                      'Patra neúčtujeme navíc (pokud se nejedná o věci nad 100 kg)',
+                      'Možnost objednat pouze montáž nábytku nebo stěhování v rámci budovy',
+                      'Zajišťujeme i převoz zboží z obchodů (Hornbach, Sconto apod.)',
+                      'Možnost převozu palet pro firmy',
+                      'Likvidace pozůstalostí dle hodinové sazby + čas na sběrném dvoře'
+                    ].map((info, index) => (
+                      <div key={index} className="flex items-start space-x-3 text-gray-600">
+                        <CheckCircle className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
+                        <span>{info}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* SECTION 6: NOČNÍ PŘÍPLATEK */}
+                <div className="bg-orange-50 p-8 rounded-3xl border border-orange-100">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Noční příplatek</h2>
+                  <p className="text-lg text-gray-700">
+                    Pokud zakázka začíná po <span className="font-bold">22:00</span>, účtujeme příplatek <span className="text-orange-600 font-bold">40 %</span> k finální ceně.
+                  </p>
+                </div>
+
+                {/* SECTION 7: DŮLEŽITÉ UPOZORNĚNÍ */}
+                <div className="bg-red-50 p-8 rounded-3xl border border-red-100">
+                  <h2 className="text-2xl font-bold text-red-900 mb-4">Důležité upozornění</h2>
+                  <div className="space-y-4 text-lg text-red-800">
+                    <p>
+                      Ceny jsou orientační a vždy záleží na konkrétní zakázce.
+                    </p>
+                    <p className="font-bold">
+                      Přesnou cenu nelze určit předem, proto vždy připravujeme individuální odhad na základě vašich požadavků.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA SECTION */}
+              <div className="mt-20 text-center bg-gradient-to-br from-gray-900 to-gray-800 p-12 rounded-3xl shadow-2xl text-white">
+                <h2 className="text-3xl font-bold mb-8">Chcete znát přesnou cenu?</h2>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <Link
+                    to="/"
+                    onClick={() => {
+                      setTimeout(() => {
+                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
+                    className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl hover:shadow-orange-500/50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
+                  >
+                    <span>Získat nezávaznou kalkulaci</span>
+                    <ChevronRight className="w-5 h-5" />
+                  </Link>
+                  <a
+                    href="tel:+420774876759"
+                    className="w-full sm:w-auto bg-white text-gray-900 px-8 py-4 rounded-lg text-lg font-bold shadow-xl hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
+                  >
+                    <Phone className="w-5 h-5" />
+                    <span>Zavolat</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="mt-12 text-center">
+                <Link to="/" className="text-gray-500 hover:text-orange-600 font-semibold transition-colors flex items-center justify-center space-x-2">
+                  <span>Zpět na úvodní stránku</span>
+                </Link>
+              </div>
+            </div>
           </div>
         } />
       </Routes>
