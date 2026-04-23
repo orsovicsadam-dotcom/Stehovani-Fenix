@@ -184,27 +184,37 @@ function App() {
             Naše <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">služby</span>
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 icon: <Package className="w-10 h-10" />,
-                title: 'Balící služba',
-                description: 'Profesionální zabalení vašich věcí do kvalitních obalových materiálů.'
+                title: 'Stěhování bytů a domů',
+                description: 'Kompletní stěhování domácností rychle a bez starostí.'
+              },
+              {
+                icon: <Users className="w-10 h-10" />,
+                title: 'Stěhování firem',
+                description: 'Přestěhujeme kanceláře i celé provozy.'
+              },
+              {
+                icon: <Truck className="w-10 h-10" />,
+                title: 'Těžká břemena',
+                description: 'Zajistíme bezpečný přesun těžkých věcí.'
               },
               {
                 icon: <Sofa className="w-10 h-10" />,
-                title: 'Demontáž a montáž',
-                description: 'Rozebereme a složíme váš nábytek rychle a bezpečně.'
-              },
-              {
-                icon: <Trash2 className="w-10 h-10" />,
-                title: 'Ekologická likvidace',
-                description: 'Zbavíme vás nepotřebných věcí ekologicky a odpovědně.'
+                title: 'Montáž nábytku',
+                description: 'Nábytek rozebereme i znovu složíme.'
               },
               {
                 icon: <Warehouse className="w-10 h-10" />,
-                title: 'Skladovací prostory',
-                description: 'Pronájem bezpečných skladů pro dočasné uložení vašeho majetku.'
+                title: 'Převoz zboží',
+                description: 'Dovezeme nákup z obchodů jako Hornbach nebo Sconto.'
+              },
+              {
+                icon: <Trash2 className="w-10 h-10" />,
+                title: 'Likvidace pozůstalostí',
+                description: 'Pomůžeme s vyklizením a odvozem věcí.'
               }
             ].map((service, index) => (
               <div
@@ -218,6 +228,16 @@ function App() {
                 <p className="text-gray-600 leading-relaxed">{service.description}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-16 text-center">
+            <Link 
+              to="/sluzby" 
+              className="inline-flex items-center space-x-2 bg-white text-gray-900 border-2 border-orange-500 px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-orange-50 transform hover:scale-105 transition-all duration-300"
+            >
+              <span>Zobrazit všechny služby</span>
+              <ChevronRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
