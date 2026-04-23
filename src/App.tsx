@@ -543,10 +543,111 @@ function App() {
     </>
   } />
         <Route path="/sluzby" element={
-          <div className="pt-32 pb-20 px-4 min-h-screen flex flex-col items-center justify-center bg-gray-50">
-            <h1 className="text-4xl font-bold mb-6">Naše služby</h1>
-            <p className="text-xl text-gray-600 mb-8">Momentálně na obsahu pro vás pracujeme.</p>
-            <Link to="/" className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-3 rounded-lg font-bold shadow-lg">Zpět na úvod</Link>
+          <div className="pt-32 pb-20 bg-gray-50 min-h-screen">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                  Naše <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">služby</span>
+                </h1>
+                <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                  Zajišťujeme kompletní stěhovací služby pro jednotlivce i firmy. Každou zakázku řešíme individuálně podle vašich potřeb.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[
+                  {
+                    icon: <Package className="w-10 h-10" />,
+                    title: 'Stěhování bytů a domů',
+                    description: 'Postaráme se o kompletní stěhování vaší domácnosti. Od naložení až po vyložení na nové adrese – rychle, bezpečně a bez zbytečných starostí.'
+                  },
+                  {
+                    icon: <Users className="w-10 h-10" />,
+                    title: 'Stěhování firem',
+                    description: 'Zajistíme stěhování kanceláří, skladů i celých provozů. Pracujeme efektivně, abychom co nejméně narušili váš chod firmy.'
+                  },
+                  {
+                    icon: <Truck className="w-10 h-10" />,
+                    title: 'Těžká břemena',
+                    description: 'Máme zkušenosti se stěhováním těžkých věcí jako jsou trezory, stroje nebo klavíry. Každou zakázku řešíme individuálně podle náročnosti.'
+                  },
+                  {
+                    icon: <Sofa className="w-10 h-10" />,
+                    title: 'Montáž a demontáž nábytku',
+                    description: 'Nábytek rozebereme, bezpečně převezeme a znovu složíme na novém místě. Nemusíte se o nic starat.'
+                  },
+                  {
+                    icon: <MapPin className="w-10 h-10" />,
+                    title: 'Převoz zboží z obchodů',
+                    description: 'Dovezeme nákup z obchodů jako Hornbach, Sconto a dalších. Zajistíme odvoz i vynesení až k vám domů.'
+                  },
+                  {
+                    icon: <Warehouse className="w-10 h-10" />,
+                    title: 'Převoz palet a zboží pro firmy',
+                    description: 'Zajišťujeme převoz palet a dalšího zboží pro firmy po celé ČR i Evropě.'
+                  },
+                  {
+                    icon: <Trash2 className="w-10 h-10" />,
+                    title: 'Likvidace pozůstalostí',
+                    description: 'Pomůžeme s vyklizením bytů nebo domů včetně odvozu a ekologické likvidace věcí.'
+                  },
+                  {
+                    icon: <ChevronRight className="w-10 h-10" />,
+                    title: 'Stěhování v rámci budovy',
+                    description: 'Potřebujete přesunout věci jen v rámci jedné budovy? Žádný problém – zajistíme rychlý a bezpečný přesun.'
+                  },
+                  {
+                    icon: <Sofa className="w-10 h-10" />,
+                    title: 'Samostatná montáž nábytku',
+                    description: 'Možnost objednat pouze montáž nebo demontáž nábytku bez stěhování.'
+                  }
+                ].map((service, index) => (
+                  <div
+                    key={index}
+                    className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300"
+                  >
+                    <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-all duration-300">
+                      {service.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900">{service.title}</h3>
+                    <p className="text-gray-600 leading-relaxed text-lg">{service.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA SECTION */}
+              <div className="mt-20 text-center bg-gradient-to-br from-orange-500 to-red-600 p-12 rounded-3xl shadow-2xl text-white">
+                <h2 className="text-3xl font-bold mb-4">Nevíte si jistí, co přesně potřebujete?</h2>
+                <p className="text-xl mb-10 opacity-90">Ozvěte se nám a připravíme řešení na míru.</p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <a
+                    href="tel:+420774876759"
+                    className="w-full sm:w-auto bg-white text-gray-900 px-8 py-4 rounded-lg text-lg font-bold shadow-xl hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
+                  >
+                    <Phone className="w-5 h-5" />
+                    <span>Zavolat</span>
+                  </a>
+                  <Link
+                    to="/"
+                    onClick={() => {
+                      setTimeout(() => {
+                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
+                    className="w-full sm:w-auto bg-gray-900 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl hover:bg-black transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
+                  >
+                    <span>Nezávazná poptávka</span>
+                    <ChevronRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="mt-12 text-center">
+                <Link to="/" className="text-gray-500 hover:text-orange-600 font-semibold transition-colors flex items-center justify-center space-x-2">
+                  <span>Zpět na úvodní stránku</span>
+                </Link>
+              </div>
+            </div>
           </div>
         } />
         <Route path="/cenik" element={
