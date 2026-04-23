@@ -316,6 +316,37 @@ function App() {
         </div>
       </section>
 
+      {/* Reviews Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
+            Reference <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">zákazníků</span>
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { src: '/Recenze1.JPG', alt: 'Reference 1' },
+              { src: '/Recenze2.JPG', alt: 'Reference 2' },
+              { src: '/Recenze3.JPG', alt: 'Reference 3' }
+            ].map((review, index) => (
+              <div
+                key={index}
+                className="bg-white p-2 rounded-xl shadow-md border border-gray-100 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group"
+              >
+                <div className="overflow-hidden rounded-lg">
+                  <img
+                    src={review.src}
+                    alt={review.alt}
+                    className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
