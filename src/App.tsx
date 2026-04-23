@@ -137,34 +137,29 @@ function App() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: <MapPin className="w-8 h-8" />,
-                title: 'Stěhování po celé Evropě',
-                description: 'Neomezujeme se jen na Česko. Stěhujeme bezpečně a rychle po celé Evropě.'
+                icon: <Truck className="w-8 h-8" />,
+                title: 'Rychlé termíny',
+                description: 'Často zvládneme stěhování ještě ten samý den.'
               },
               {
                 icon: <Users className="w-8 h-8" />,
-                title: '8+ let zkušeností',
-                description: 'Díky letitým zkušenostem víme, jak na každé stěhování – malé i velké.'
+                title: 'Stěhování nonstop',
+                description: 'Pracujeme o víkendech, svátcích i v nočních hodinách.'
               },
               {
                 icon: <Package className="w-8 h-8" />,
-                title: 'Kompletní servis',
-                description: 'Od zabalení, přes transport, až po vybalení. Postaráme se o vše.'
+                title: 'Zkušenosti s těžkými břemeny',
+                description: 'Poradíme si i s věcmi nad 100 kg.'
               },
               {
                 icon: <Euro className="w-8 h-8" />,
-                title: 'Transparentní ceny',
-                description: 'Žádné skryté poplatky. Co vidíte v kalkulaci, to zaplatíte.'
+                title: 'Férový odhad ceny',
+                description: 'Cena se odvíjí od času, vzdálenosti a náročnosti zakázky.'
               },
               {
                 icon: <Shield className="w-8 h-8" />,
-                title: 'Pojištění zásilek',
-                description: 'Váš majetek je u nás v bezpečí. Všechny zásilky jsou plně pojištěny.'
-              },
-              {
-                icon: <Truck className="w-8 h-8" />,
-                title: 'Stěhujeme cokoli',
-                description: 'Byty, kanceláře, těžká břemena – žádná výzva není příliš velká.'
+                title: 'Kompletní servis',
+                description: 'Zajistíme stěhování, montáže i další služby.'
               }
             ].map((item, index) => (
               <div
