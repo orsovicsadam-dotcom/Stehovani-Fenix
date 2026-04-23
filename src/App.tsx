@@ -73,26 +73,40 @@ function App() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
           <div className="animate-fade-in">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                Už žádný stres
-              </span>
+              <span className="text-gray-900">Stěhování bez stresu</span>
               <br />
-              <span className="text-gray-900">ze stěhování</span>
+              <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                po Praze, ČR i Evropě
+              </span>
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Postaráme se o vše – v ČR i po celé Evropě
+            <p className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Rychlé termíny, férový odhad ceny a zkušenosti i s těžkými břemeny. Často zvládneme stěhování ještě ten den.
             </p>
-            <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Jako fénix, který povstává z popela, pomůžeme vám začít novou kapitolu bez starostí.
-              Stěhování s námi znamená nový začátek bez stresu, kde se postaráme o každý detail.
-            </p>
-            <button
-              onClick={scrollToContact}
-              className="group bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-2xl hover:shadow-orange-500/50 transform hover:scale-105 transition-all duration-300 inline-flex items-center space-x-2"
-            >
-              <span>Nezávazná kalkulace zdarma</span>
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="tel:+420774876759"
+                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl hover:shadow-orange-500/50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
+              >
+                <Phone className="w-5 h-5" />
+                <span>Zavolat</span>
+              </a>
+              <a
+                href="https://wa.me/420774876759"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto bg-[#25D366] text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl hover:shadow-green-500/50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span>WhatsApp</span>
+              </a>
+              <button
+                onClick={scrollToContact}
+                className="w-full sm:w-auto bg-white text-gray-900 border-2 border-orange-500 px-8 py-4 rounded-lg text-lg font-bold shadow-lg hover:bg-orange-50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
+              >
+                <span>Nezávazná poptávka</span>
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
