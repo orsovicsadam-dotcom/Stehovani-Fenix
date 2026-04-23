@@ -242,6 +242,39 @@ function App() {
         </div>
       </section>
 
+      {/* Pricing Information */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100">
+            <h2 className="text-4xl font-bold mb-8 text-gray-900 text-center">
+              Kolik stojí <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">stěhování</span>?
+            </h2>
+            <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+              <p className="text-xl font-medium text-gray-900 text-center">
+                Cena se vždy odvíjí od konkrétní zakázky. Nedá se určit jednotná částka předem.
+              </p>
+              <p className="text-center">Záleží především na:</p>
+              <ul className="grid sm:grid-cols-2 gap-4">
+                {[
+                  'čase stráveném na zakázce',
+                  'vzdálenosti mezi adresami',
+                  'množství věcí',
+                  'náročnosti stěhování'
+                ].map((item, index) => (
+                  <li key={index} className="flex items-center space-x-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                    <CheckCircle className="w-6 h-6 text-orange-500 flex-shrink-0" />
+                    <span className="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-center pt-6 font-semibold text-gray-900 border-t border-gray-100">
+                Každou zakázku naceníme individuálně na základě informací od vás.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Process */}
       <section className="py-20 bg-gradient-to-br from-orange-500 to-red-600 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
