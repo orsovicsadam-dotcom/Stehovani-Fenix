@@ -70,52 +70,57 @@ function App() {
         <Route path="/" element={
           <>
             {/* Hero Section */}
-            <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-orange-50 via-white to-red-50">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-1/2 -right-1/4 w-96 h-96 bg-gradient-to-br from-orange-400/20 to-red-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-1/2 -left-1/4 w-96 h-96 bg-gradient-to-br from-red-400/20 to-orange-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
+            <section className="relative h-[85vh] flex items-center overflow-hidden bg-gray-900">
+              <div className="absolute inset-0">
+                <img 
+                  src="/Hero-image.jpg" 
+                  alt="Stěhování Fénix" 
+                  className="w-full h-full object-cover object-center"
+                />
+                {/* Overlay: dark gradient darker on left for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"></div>
+              </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
-          <div className="animate-fade-in">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="text-gray-900">Stěhování bez stresu</span>
-              <br />
-              <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                po Praze, ČR i Evropě
-              </span>
-            </h1>
-            <p className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Rychlé termíny, férový odhad ceny a zkušenosti i s těžkými břemeny. Často zvládneme stěhování ještě ten den.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="tel:+420774876759"
-                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl hover:shadow-orange-500/50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
-              >
-                <Phone className="w-5 h-5" />
-                <span>Zavolat</span>
-              </a>
-              <a
-                href="https://wa.me/420774876759"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto bg-[#25D366] text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl hover:shadow-green-500/50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
-              >
-                <MessageCircle className="w-5 h-5" />
-                <span>WhatsApp</span>
-              </a>
-              <button
-                onClick={scrollToContact}
-                className="w-full sm:w-auto bg-white text-gray-900 border-2 border-orange-500 px-8 py-4 rounded-lg text-lg font-bold shadow-lg hover:bg-orange-50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
-              >
-                <span>Nezávazná poptávka</span>
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+              <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div className="max-w-3xl animate-fade-in text-left">
+                  <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight text-white">
+                    Stěhování bez stresu
+                    <br />
+                    <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+                      po Praze, ČR i Evropě
+                    </span>
+                  </h1>
+                  <p className="text-xl sm:text-2xl text-gray-200 mb-12 max-w-2xl leading-relaxed">
+                    Rychlé termíny, férový odhad ceny a zkušenosti i s těžkými břemeny. Často zvládneme stěhování ještě ten den.
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-center justify-start gap-4">
+                    <a
+                      href="tel:+420774876759"
+                      className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl hover:shadow-orange-500/50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
+                    >
+                      <Phone className="w-5 h-5" />
+                      <span>Zavolat</span>
+                    </a>
+                    <a
+                      href="https://wa.me/420774876759"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto bg-[#25D366] text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl hover:shadow-green-500/50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
+                    >
+                      <MessageCircle className="w-5 h-5" />
+                      <span>WhatsApp</span>
+                    </a>
+                    <button
+                      onClick={scrollToContact}
+                      className="w-full sm:w-auto bg-white text-gray-900 border-2 border-orange-500 px-8 py-4 rounded-lg text-lg font-bold shadow-lg hover:bg-orange-50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
+                    >
+                      <span>Nezávazná poptávka</span>
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
 
       {/* About / Value Proposition */}
       <section className="py-20 bg-white">
