@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Shield, Euro, Truck, Package, Users, CheckCircle, Sofa, Trash2, Warehouse, ChevronRight, MessageCircle, Facebook } from 'lucide-react';
+import { Phone, Mail, MapPin, Shield, Euro, Truck, Package, Users, CheckCircle, Sofa, Trash2, Warehouse, ChevronRight, MessageCircle, Facebook, ArrowUp } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { NavLink, Link, Routes, Route, useLocation } from 'react-router-dom';
 
@@ -8,7 +8,36 @@ function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeSection, setActiveSection] = useState('');
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 500);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
 
   useEffect(() => {
     if (location.pathname !== '/') {
@@ -172,7 +201,7 @@ function App() {
             </section>
 
       {/* About / Value Proposition */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold mb-6 text-gray-900">
@@ -188,7 +217,7 @@ function App() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-orange-50/30">
+      <section className="py-24 bg-gradient-to-br from-gray-50 to-orange-50/30 reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
             Proč si vybrat <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">Fénix</span>?
@@ -229,7 +258,7 @@ function App() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100"
+                className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 reveal"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform">
                   {item.icon}
@@ -243,7 +272,7 @@ function App() {
       </section>
 
       {/* Services */}
-      <section id="services-preview" className="py-20 bg-white">
+      <section id="services-preview" className="py-24 bg-white reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
             Naše <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">služby</span>
@@ -284,7 +313,7 @@ function App() {
             ].map((service, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 reveal"
               >
                 <div className="aspect-[16/9] w-full overflow-hidden">
                   <img 
@@ -314,7 +343,7 @@ function App() {
       </section>
 
       {/* Pricing Information */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50 reveal">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100 text-center">
             <h2 className="text-4xl font-bold mb-8 text-gray-900">
@@ -361,14 +390,21 @@ function App() {
       </section>
 
       {/* Process */}
-      <section className="py-20 bg-gradient-to-br from-orange-500 to-red-600 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-16">
-            Jak to funguje?
-          </h2>
+      <section className="py-24 bg-white reveal">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Jak to <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">funguje</span>?
+            </h2>
+            <p className="text-xl text-gray-600">
+              Stěhování s námi je jednoduché, rychlé a bez zbytečných starostí.
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-3 gap-8 relative">
+            {/* Connecting lines for desktop */}
+            <div className="hidden lg:block absolute top-24 left-1/4 w-1/2 h-0.5 bg-gray-100 z-0"></div>
+
             {[
               {
                 number: '01',
@@ -386,15 +422,14 @@ function App() {
                 description: 'Vy se už o nic nestaráte. My vyřídíme zbytek od A do Z.'
               }
             ].map((step, index) => (
-              <div key={index} className="text-center group">
-                <div className="text-7xl font-bold mb-6 opacity-30 group-hover:opacity-50 transition-opacity">
-                  {step.number}
+              <div key={index} className="relative z-10 text-center group reveal">
+                <div className="bg-white p-10 rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 h-full">
+                  <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center text-white text-3xl font-bold mb-8 mx-auto group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-orange-500/20">
+                    {step.number}
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900">{step.title}</h3>
+                  <p className="text-gray-600 text-lg leading-relaxed">{step.description}</p>
                 </div>
-                <div className="flex items-center justify-center mb-4">
-                  <CheckCircle className="w-12 h-12 group-hover:scale-110 transition-transform" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
-                <p className="text-white/90 text-lg leading-relaxed">{step.description}</p>
               </div>
             ))}
           </div>
@@ -402,7 +437,7 @@ function App() {
       </section>
 
       {/* Realizations Showcase */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50 reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -475,7 +510,7 @@ function App() {
       </section>
 
       {/* Reviews Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
             Reference <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">zákazníků</span>
@@ -506,7 +541,7 @@ function App() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white reveal">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900">
             Začněte <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">bez stresu</span> ještě dnes
@@ -525,51 +560,63 @@ function App() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            Často kladené <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">otázky</span>
-          </h2>
+      <section className="py-24 bg-white reveal">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Často kladené <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">otázky</span>
+            </h2>
+            <p className="text-xl text-gray-600">
+              Vše, co potřebujete vědět o našich službách a průběhu stěhování.
+            </p>
+          </div>
           
-          <div className="space-y-4">
+          <div className="grid gap-4">
             {[
               {
                 q: "Kolik stojí stěhování?",
-                a: "Cena závisí na čase, vzdálenosti, množství věcí a náročnosti zakázky."
+                a: "Cena stěhování se vždy odvíjí od konkrétní zakázky. Záleží především na čase stráveném na zakázce, vzdálenosti mezi adresami, množství věcí a náročnosti stěhování."
               },
               {
-                q: "Jak dlouho dopředu objednat?",
-                a: "Individuálně. Často je možné zajistit stěhování i ve stejný den."
+                q: "Jak dlouho dopředu je nutné stěhování objednat?",
+                a: "Termíny řešíme individuálně. Díky naší flexibilitě jsme často schopni zajistit stěhování ještě ten samý den nebo do 24 hodin od poptávky."
               },
               {
-                q: "Stěhujete o víkendech a svátcích?",
-                a: "Ano, pracujeme i o víkendech, svátcích a po domluvě i v noci."
+                q: "Stěhujete i o víkendech a svátcích?",
+                a: "Ano, pracujeme nonstop. Stěhování o víkendech, svátcích nebo v nočních hodinách zajišťujeme bez jakýchkoliv příplatků za víkend."
               },
               {
-                q: "Jak řešíte těžké věci?",
-                a: "Individuálně podle váhy a podmínek. Na základě informací uděláme odhad ceny."
+                q: "Jak probíhá nacenění a objednávka?",
+                a: "Stačí nás kontaktovat telefonicky, přes WhatsApp nebo formulář. Na základě vašich informací připravíme orientační odhad ceny a domluvíme termín."
               },
               {
-                q: "Jak probíhá objednávka?",
-                a: "Zavoláte nebo napíšete, popíšete zakázku a my připravíme odhad ceny."
+                q: "Zajistíte i demontáž a montáž nábytku?",
+                a: "Samozřejmě. Naši pracovníci jsou vybaveni profesionálním nářadím a postarají se o bezpečné rozložení i složení vašeho nábytku."
               },
               {
-                q: "Je cena pevná?",
-                a: "Pevná cena je možná, ale bývá vyšší. Obvykle pracujeme s odhadem."
+                q: "Potřebuji přestěhovat jen pár kusů nábytku, je to možné?",
+                a: "Ano, stěhujeme od jednoho kusu nábytku až po velké domy a firmy. Žádná zakázka pro nás není příliš malá ani příliš velká."
               }
             ].map((faq, index) => (
-              <div key={index} className="border border-gray-200 rounded-xl overflow-hidden">
+              <div 
+                key={index} 
+                className={`group bg-white border rounded-2xl transition-all duration-300 ${openFaq === index ? 'border-orange-500 shadow-lg ring-1 ring-orange-500/20' : 'border-gray-100 hover:border-orange-200 hover:shadow-md'}`}
+              >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-5 text-left bg-white hover:bg-gray-50 transition-colors"
+                  className="w-full flex items-center justify-between p-6 text-left transition-colors"
                 >
-                  <span className="font-bold text-gray-900">{faq.q}</span>
-                  <ChevronRight className={`w-5 h-5 text-orange-500 transition-transform duration-300 ${openFaq === index ? 'rotate-90' : ''}`} />
+                  <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-orange-600' : 'text-gray-900 group-hover:text-orange-500'}`}>
+                    {faq.q}
+                  </span>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${openFaq === index ? 'bg-orange-500 text-white rotate-180' : 'bg-gray-100 text-gray-400 group-hover:bg-orange-50 group-hover:text-orange-500'}`}>
+                    <ChevronRight className="w-5 h-5" />
+                  </div>
                 </button>
                 <div 
-                  className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === index ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
                 >
-                  <div className="p-5 pt-0 text-gray-600 leading-relaxed border-t border-gray-50">
+                  <div className="p-6 pt-0 text-gray-600 leading-relaxed text-lg border-t border-gray-50">
                     {faq.a}
                   </div>
                 </div>
@@ -580,7 +627,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-orange-50/30">
+      <section id="contact" className="py-24 bg-gradient-to-br from-gray-50 to-orange-50/30 reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
             Kontaktujte <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">nás</span>
@@ -1173,6 +1220,14 @@ function App() {
         </div>
       </footer>
 
+      {/* Back to Top Button */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className={`fixed bottom-8 right-8 z-50 bg-white text-gray-900 p-4 rounded-full shadow-2xl border border-gray-100 hover:shadow-orange-500/20 transform hover:-translate-y-1 transition-all duration-300 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
+        aria-label="Zpět nahoru"
+      >
+        <ArrowUp className="w-6 h-6 text-orange-600" />
+      </button>
 
     </div>
   );
