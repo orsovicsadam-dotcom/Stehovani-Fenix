@@ -98,36 +98,36 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center space-x-2">
-              <img 
-                src="/Stěhování-Fénix-logo.jpg" 
-                alt="Logo Stěhování Fénix" 
-                className="h-12 w-auto object-contain transform hover:scale-110 transition-transform rounded" 
+              <img
+                src="/Stěhování-Fénix-logo.jpg"
+                alt="Logo Stěhování Fénix"
+                className="h-12 w-auto object-contain transform hover:scale-110 transition-transform rounded"
               />
               <span className={`text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent`}>
                 Stěhování Fénix
               </span>
             </div>
             <div className="hidden md:flex items-center space-x-8 text-gray-700 font-semibold">
-              <NavLink 
-                to="/" 
+              <NavLink
+                to="/"
                 end
-                className={({ isActive }) => 
+                className={({ isActive }) =>
                   `transition-colors py-2 border-b-2 ${isActive && (activeSection === 'hero' || activeSection === '') ? 'text-orange-600 border-orange-600' : 'border-transparent hover:text-orange-600'}`
                 }
               >
                 Úvod
               </NavLink>
-              <NavLink 
-                to="/sluzby" 
-                className={({ isActive }) => 
+              <NavLink
+                to="/sluzby"
+                className={({ isActive }) =>
                   `transition-colors py-2 border-b-2 ${isActive ? 'text-orange-600 border-orange-600' : 'border-transparent hover:text-orange-600'}`
                 }
               >
                 Naše služby
               </NavLink>
-              <NavLink 
-                to="/cenik" 
-                className={({ isActive }) => 
+              <NavLink
+                to="/cenik"
+                className={({ isActive }) =>
                   `transition-colors py-2 border-b-2 ${isActive ? 'text-orange-600 border-orange-600' : 'border-transparent hover:text-orange-600'}`
                 }
               >
@@ -150,9 +150,9 @@ function App() {
             {/* Hero Section */}
             <section id="hero" className="relative h-[80vh] flex items-center overflow-hidden bg-gray-900">
               <div className="absolute inset-0">
-                <img 
-                  src="/Hero-image.jpg" 
-                  alt="Stěhování Fénix" 
+                <img
+                  src="/Hero-image.jpg"
+                  alt="Stěhování Fénix"
                   className="w-full h-full object-cover object-center"
                 />
                 {/* Overlay: dark gradient darker on left for text readability */}
@@ -200,601 +200,601 @@ function App() {
               </div>
             </section>
 
-      {/* About / Value Proposition */}
-      <section className="py-24 bg-white reveal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl font-bold mb-6 text-gray-900">
-              Stěhování nemusí být <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">noční můra</span>
-            </h2>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              Staráme se o každý detail vašeho stěhování, abyste vy mohli mít klid.
-              Od zabalení první krabice až po vybalení v novém domově – jsme tu pro vás.
-              Jednoduše, bezstarostně, profesionálně.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-orange-50/30 reveal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
-            Proč si vybrat <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">Fénix</span>?
-          </h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Truck className="w-8 h-8" />,
-                title: 'Rychlé termíny',
-                description: 'Často zvládneme stěhování ještě ten samý den.'
-              },
-              {
-                icon: <Users className="w-8 h-8" />,
-                title: 'Stěhování nonstop',
-                description: 'Pracujeme o víkendech, svátcích i v nočních hodinách.'
-              },
-              {
-                icon: <Package className="w-8 h-8" />,
-                title: 'Zkušenosti s těžkými břemeny',
-                description: 'Poradíme si i s věcmi nad 100 kg.'
-              },
-              {
-                icon: <Euro className="w-8 h-8" />,
-                title: 'Férový odhad ceny',
-                description: 'Cena se odvíjí od času, vzdálenosti a náročnosti zakázky.'
-              },
-              {
-                icon: <Shield className="w-8 h-8" />,
-                title: 'Kompletní servis',
-                description: 'Zajistíme stěhování, montáže i další služby.'
-              },
-              {
-                icon: <MapPin className="w-8 h-8" />,
-                title: 'Stěhování po celé ČR i Evropě',
-                description: 'Zajišťujeme stěhování nejen po Česku, ale i po celé Evropě bezpečně a spolehlivě.'
-              }
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 reveal"
-              >
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section id="services-preview" className="py-24 bg-white reveal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
-            Naše <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">služby</span>
-          </h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                image: '/image1.jpg',
-                title: 'Stěhování bytů a domů',
-                description: 'Kompletní stěhování domácností rychle a bez starostí.'
-              },
-              {
-                image: '/image2.jpg',
-                title: 'Stěhování firem',
-                description: 'Přestěhujeme kanceláře i celé provozy.'
-              },
-              {
-                image: '/image3.jpg',
-                title: 'Těžká břemena',
-                description: 'Zajistíme bezpečný přesun těžkých věcí.'
-              },
-              {
-                image: '/image4.jpg',
-                title: 'Montáž nábytku',
-                description: 'Nábytek rozebereme i znovu složíme.'
-              },
-              {
-                image: '/image5.jpg',
-                title: 'Převoz zboží',
-                description: 'Dovezeme nákup z obchodů jako Hornbach nebo Sconto.'
-              },
-              {
-                image: '/image7.jpg',
-                title: 'Likvidace pozůstalostí',
-                description: 'Pomůžeme s vyklizením a odvozem věcí.'
-              }
-            ].map((service, index) => (
-              <div
-                key={index}
-                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 reveal"
-              >
-                <div className="aspect-[16/9] w-full overflow-hidden">
-                  <img 
-                    src={service.image} 
-                    alt={service.title} 
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
-                  />
-                </div>
-                <div className="p-8 text-center">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{service.description}</p>
+            {/* About / Value Proposition */}
+            <section className="py-24 bg-white reveal">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center max-w-3xl mx-auto">
+                  <h2 className="text-4xl font-bold mb-6 text-gray-900">
+                    Stěhování nemusí být <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">noční můra</span>
+                  </h2>
+                  <p className="text-xl text-gray-600 leading-relaxed">
+                    Staráme se o každý detail vašeho stěhování, abyste vy mohli mít klid.
+                    Od zabalení první krabice až po vybalení v novém domově – jsme tu pro vás.
+                    Jednoduše, bezstarostně, profesionálně.
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
+            </section>
 
-          <div className="mt-16 text-center">
-            <Link 
-              to="/sluzby" 
-              className="inline-flex items-center space-x-2 bg-white text-gray-900 border-2 border-orange-500 px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-orange-50 transform hover:scale-105 transition-all duration-300"
-            >
-              <span>Zobrazit všechny služby</span>
-              <ChevronRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
+            {/* Why Choose Us */}
+            <section className="py-24 bg-gradient-to-br from-gray-50 to-orange-50/30 reveal">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
+                  Proč si vybrat <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">Fénix</span>?
+                </h2>
 
-      {/* Pricing Information */}
-      <section className="py-24 bg-gray-50 reveal">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100 text-center">
-            <h2 className="text-4xl font-bold mb-8 text-gray-900">
-              Kolik stojí <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">stěhování</span>?
-            </h2>
-            <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-              <p className="text-xl font-medium text-gray-900">
-                Cena stěhování se vždy odvíjí od konkrétní zakázky.
-              </p>
-              <p>Záleží především na:</p>
-              <ul className="grid sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
-                {[
-                  'čase stráveném na zakázce',
-                  'vzdálenosti mezi adresami',
-                  'množství věcí',
-                  'náročnosti stěhování'
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center space-x-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
-                    <CheckCircle className="w-6 h-6 text-orange-500 flex-shrink-0" />
-                    <span className="text-gray-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="pt-6 space-y-6 border-t border-gray-100">
-                <p className="font-semibold text-gray-900">
-                  Každou zakázku naceníme individuálně na základě vašich požadavků.
-                </p>
-                <p>
-                  Pro lepší představu si můžete prohlédnout náš orientační ceník.
-                </p>
-                <div className="pt-4">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {[
+                    {
+                      icon: <Truck className="w-8 h-8" />,
+                      title: 'Rychlé termíny',
+                      description: 'Často zvládneme stěhování ještě ten samý den.'
+                    },
+                    {
+                      icon: <Users className="w-8 h-8" />,
+                      title: 'Stěhování nonstop',
+                      description: 'Pracujeme o víkendech, svátcích i v nočních hodinách.'
+                    },
+                    {
+                      icon: <Package className="w-8 h-8" />,
+                      title: 'Zkušenosti s těžkými břemeny',
+                      description: 'Poradíme si i s věcmi nad 100 kg.'
+                    },
+                    {
+                      icon: <Euro className="w-8 h-8" />,
+                      title: 'Férový odhad ceny',
+                      description: 'Cena se odvíjí od času, vzdálenosti a náročnosti zakázky.'
+                    },
+                    {
+                      icon: <Shield className="w-8 h-8" />,
+                      title: 'Kompletní servis',
+                      description: 'Zajistíme stěhování, montáže i další služby.'
+                    },
+                    {
+                      icon: <MapPin className="w-8 h-8" />,
+                      title: 'Stěhování po celé ČR i Evropě',
+                      description: 'Zajišťujeme stěhování nejen po Česku, ale i po celé Evropě bezpečně a spolehlivě.'
+                    }
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 reveal"
+                    >
+                      <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform">
+                        {item.icon}
+                      </div>
+                      <h3 className="text-xl font-bold mb-3 text-gray-900">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Services */}
+            <section id="services-preview" className="py-24 bg-white reveal">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
+                  Naše <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">služby</span>
+                </h2>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {[
+                    {
+                      image: '/image1.jpg',
+                      title: 'Stěhování bytů a domů',
+                      description: 'Kompletní stěhování domácností rychle a bez starostí.'
+                    },
+                    {
+                      image: '/image2.jpg',
+                      title: 'Stěhování firem',
+                      description: 'Přestěhujeme kanceláře i celé provozy.'
+                    },
+                    {
+                      image: '/image3.jpg',
+                      title: 'Těžká břemena',
+                      description: 'Zajistíme bezpečný přesun těžkých věcí.'
+                    },
+                    {
+                      image: '/image4.jpg',
+                      title: 'Montáž nábytku',
+                      description: 'Nábytek rozebereme i znovu složíme.'
+                    },
+                    {
+                      image: '/image5.jpg',
+                      title: 'Převoz zboží',
+                      description: 'Dovezeme nákup z obchodů jako Hornbach nebo Sconto.'
+                    },
+                    {
+                      image: '/image7.jpg',
+                      title: 'Likvidace pozůstalostí',
+                      description: 'Pomůžeme s vyklizením a odvozem věcí.'
+                    }
+                  ].map((service, index) => (
+                    <div
+                      key={index}
+                      className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 reveal"
+                    >
+                      <div className="aspect-[16/9] w-full overflow-hidden">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="p-8 text-center">
+                        <h3 className="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
+                        <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-16 text-center">
                   <Link
-                    to="/cenik"
-                    className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-lg font-bold shadow-lg hover:shadow-orange-500/50 transform hover:scale-105 transition-all duration-300"
+                    to="/sluzby"
+                    className="inline-flex items-center space-x-2 bg-white text-gray-900 border-2 border-orange-500 px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-orange-50 transform hover:scale-105 transition-all duration-300"
                   >
-                    <span>Zobrazit ceník</span>
+                    <span>Zobrazit všechny služby</span>
                     <ChevronRight className="w-5 h-5" />
                   </Link>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </section>
 
-      {/* Process */}
-      <section className="py-24 bg-white reveal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Jak to <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">funguje</span>?
-            </h2>
-            <p className="text-xl text-gray-600">
-              Stěhování s námi je jednoduché, rychlé a bez zbytečných starostí.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 relative">
-            {/* Connecting lines for desktop */}
-            <div className="hidden lg:block absolute top-24 left-1/4 w-1/2 h-0.5 bg-gray-100 z-0"></div>
-
-            {[
-              {
-                number: '01',
-                title: 'Kontaktujete nás',
-                description: 'Zavolejte, napište email nebo vyplňte formulář. Rádi vám poradíme.'
-              },
-              {
-                number: '02',
-                title: 'Připravíme kalkulaci',
-                description: 'Na základě vašich potřeb vytvoříme nezávaznou cenovou nabídku.'
-              },
-              {
-                number: '03',
-                title: 'Postaráme se o stěhování',
-                description: 'Vy se už o nic nestaráte. My vyřídíme zbytek od A do Z.'
-              }
-            ].map((step, index) => (
-              <div key={index} className="relative z-10 text-center group reveal">
-                <div className="bg-white p-10 rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 h-full">
-                  <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center text-white text-3xl font-bold mb-8 mx-auto group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-orange-500/20">
-                    {step.number}
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900">{step.title}</h3>
-                  <p className="text-gray-600 text-lg leading-relaxed">{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Realizations Showcase */}
-      <section className="py-24 bg-gray-50 reveal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Ukázky <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">realizací</span>
-            </h2>
-            <p className="text-xl text-gray-600">
-              Reálné ukázky naší práce – vyklízení, montáže i přeprava.
-            </p>
-          </div>
-
-          <div className="space-y-16">
-            {/* Block 1: Vyklízení prostor */}
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
-              <h3 className="text-2xl font-bold mb-8 text-gray-900">Vyklízení prostor</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                {[
-                  { src: '/before1.jpeg', label: 'PŘED' },
-                  { src: '/after1.jpeg', label: 'PO' },
-                  { src: '/before3.jpeg', label: 'PŘED' },
-                  { src: '/after3.jpeg', label: 'PO' }
-                ].map((img, i) => (
-                  <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-md">
-                    <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
-                    <span className="absolute top-2 left-2 bg-black/60 text-white text-xs font-bold px-2 py-1 rounded">
-                      {img.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <p className="text-gray-600 text-lg">
-                Kompletní vyklizení prostor včetně odvozu a ekologické likvidace.
-              </p>
-            </div>
-
-            {/* Block 2: Montáž nábytku */}
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
-              <h3 className="text-2xl font-bold mb-8 text-gray-900">Montáž nábytku</h3>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                {[
-                  { src: '/montage-before.jpeg', label: 'PŘED' },
-                  { src: '/montage-after.jpeg', label: 'PO' }
-                ].map((img, i) => (
-                  <div key={i} className="relative aspect-[16/9] md:aspect-[4/3] rounded-xl overflow-hidden shadow-md">
-                    <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
-                    <span className="absolute top-2 left-2 bg-black/60 text-white text-xs font-bold px-2 py-1 rounded">
-                      {img.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <p className="text-gray-600 text-lg">
-                Demontáž, převoz a opětovná montáž nábytku na nové adrese.
-              </p>
-            </div>
-
-            {/* Block 3: Přeprava */}
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
-              <h3 className="text-2xl font-bold mb-8 text-gray-900">Přeprava</h3>
-              <div className="max-w-3xl mx-auto mb-6">
-                <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden shadow-md">
-                  <img src="/transport2.jpeg" alt="Přeprava" className="w-full h-full object-cover" />
-                </div>
-              </div>
-              <p className="text-gray-600 text-lg text-center">
-                Bezpečný převoz vybavení a nábytku pomocí profesionálně vybaveného vozu.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews Section */}
-      <section className="py-24 bg-white reveal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
-            Reference <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">zákazníků</span>
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { src: '/Recenze1.JPG', alt: 'Reference 1' },
-              { src: '/Recenze2.JPG', alt: 'Reference 2' },
-              { src: '/Recenze3.JPG', alt: 'Reference 3' }
-            ].map((review, index) => (
-              <div
-                key={index}
-                className="bg-white p-2 rounded-xl shadow-md border border-gray-100 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group"
-              >
-                <div className="overflow-hidden rounded-lg">
-                  <img
-                    src={review.src}
-                    alt={review.alt}
-                    className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-white reveal">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900">
-            Začněte <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">bez stresu</span> ještě dnes
-          </h2>
-          <p className="text-xl text-gray-600 mb-10">
-            Získejte nezávaznou kalkulaci zdarma a nechte starosti na nás.
-          </p>
-          <button
-            onClick={scrollToContact}
-            className="group bg-gradient-to-r from-orange-500 to-red-600 text-white px-10 py-5 rounded-lg text-xl font-bold shadow-2xl hover:shadow-orange-500/50 transform hover:scale-105 transition-all duration-300 inline-flex items-center space-x-2"
-          >
-            <span>Získat kalkulaci zdarma</span>
-            <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-          </button>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-24 bg-white reveal">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Často kladené <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">otázky</span>
-            </h2>
-            <p className="text-xl text-gray-600">
-              Vše, co potřebujete vědět o našich službách a průběhu stěhování.
-            </p>
-          </div>
-          
-          <div className="grid gap-4">
-            {[
-              {
-                q: "Kolik stojí stěhování?",
-                a: "Cena stěhování se vždy odvíjí od konkrétní zakázky. Záleží především na čase stráveném na zakázce, vzdálenosti mezi adresami, množství věcí a náročnosti stěhování."
-              },
-              {
-                q: "Jak dlouho dopředu je nutné stěhování objednat?",
-                a: "Termíny řešíme individuálně. Díky naší flexibilitě jsme často schopni zajistit stěhování ještě ten samý den nebo do 24 hodin od poptávky."
-              },
-              {
-                q: "Stěhujete i o víkendech a svátcích?",
-                a: "Ano, pracujeme nonstop. Stěhování o víkendech, svátcích nebo v nočních hodinách zajišťujeme bez jakýchkoliv příplatků za víkend."
-              },
-              {
-                q: "Jak probíhá nacenění a objednávka?",
-                a: "Stačí nás kontaktovat telefonicky, přes WhatsApp nebo formulář. Na základě vašich informací připravíme orientační odhad ceny a domluvíme termín."
-              },
-              {
-                q: "Zajistíte i demontáž a montáž nábytku?",
-                a: "Samozřejmě. Naši pracovníci jsou vybaveni profesionálním nářadím a postarají se o bezpečné rozložení i složení vašeho nábytku."
-              },
-              {
-                q: "Potřebuji přestěhovat jen pár kusů nábytku, je to možné?",
-                a: "Ano, stěhujeme od jednoho kusu nábytku až po velké domy a firmy. Žádná zakázka pro nás není příliš malá ani příliš velká."
-              }
-            ].map((faq, index) => (
-              <div 
-                key={index} 
-                className={`group bg-white border rounded-2xl transition-all duration-300 ${openFaq === index ? 'border-orange-500 shadow-lg ring-1 ring-orange-500/20' : 'border-gray-100 hover:border-orange-200 hover:shadow-md'}`}
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left transition-colors"
-                >
-                  <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-orange-600' : 'text-gray-900 group-hover:text-orange-500'}`}>
-                    {faq.q}
-                  </span>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${openFaq === index ? 'bg-orange-500 text-white rotate-180' : 'bg-gray-100 text-gray-400 group-hover:bg-orange-50 group-hover:text-orange-500'}`}>
-                    <ChevronRight className="w-5 h-5" />
-                  </div>
-                </button>
-                <div 
-                  className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === index ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
-                >
-                  <div className="p-6 pt-0 text-gray-600 leading-relaxed text-lg border-t border-gray-50">
-                    {faq.a}
+            {/* Pricing Information */}
+            <section className="py-24 bg-gray-50 reveal">
+              <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100 text-center">
+                  <h2 className="text-4xl font-bold mb-8 text-gray-900">
+                    Kolik stojí <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">stěhování</span>?
+                  </h2>
+                  <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+                    <p className="text-xl font-medium text-gray-900">
+                      Cena stěhování se vždy odvíjí od konkrétní zakázky.
+                    </p>
+                    <p>Záleží především na:</p>
+                    <ul className="grid sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
+                      {[
+                        'čase stráveném na zakázce',
+                        'vzdálenosti mezi adresami',
+                        'množství věcí',
+                        'náročnosti stěhování'
+                      ].map((item, index) => (
+                        <li key={index} className="flex items-center space-x-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                          <CheckCircle className="w-6 h-6 text-orange-500 flex-shrink-0" />
+                          <span className="text-gray-700">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="pt-6 space-y-6 border-t border-gray-100">
+                      <p className="font-semibold text-gray-900">
+                        Každou zakázku naceníme individuálně na základě vašich požadavků.
+                      </p>
+                      <p>
+                        Pro lepší představu si můžete prohlédnout náš orientační ceník.
+                      </p>
+                      <div className="pt-4">
+                        <Link
+                          to="/cenik"
+                          className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-lg font-bold shadow-lg hover:shadow-orange-500/50 transform hover:scale-105 transition-all duration-300"
+                        >
+                          <span>Zobrazit ceník</span>
+                          <ChevronRight className="w-5 h-5" />
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-24 bg-gradient-to-br from-gray-50 to-orange-50/30 reveal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
-            Kontaktujte <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">nás</span>
-          </h2>
+            {/* Process */}
+            <section className="py-24 bg-white reveal">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                    Jak to <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">funguje</span>?
+                  </h2>
+                  <p className="text-xl text-gray-600">
+                    Stěhování s námi je jednoduché, rychlé a bez zbytečných starostí.
+                  </p>
+                </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 className="text-2xl font-bold mb-6 text-gray-900">Máte dotazy?</h3>
-                <p className="text-gray-600 mb-8 leading-relaxed">
-                  Rádi vám poradíme a připravíme cenovou nabídku na míru. Neváhejte nás kontaktovat!
+                <div className="grid md:grid-cols-3 gap-8 relative">
+                  {/* Connecting lines for desktop */}
+                  <div className="hidden lg:block absolute top-24 left-1/4 w-1/2 h-0.5 bg-gray-100 z-0"></div>
+
+                  {[
+                    {
+                      number: '01',
+                      title: 'Kontaktujete nás',
+                      description: 'Zavolejte, napište email nebo vyplňte formulář. Rádi vám poradíme.'
+                    },
+                    {
+                      number: '02',
+                      title: 'Připravíme kalkulaci',
+                      description: 'Na základě vašich potřeb vytvoříme nezávaznou cenovou nabídku.'
+                    },
+                    {
+                      number: '03',
+                      title: 'Postaráme se o stěhování',
+                      description: 'Vy se už o nic nestaráte. My vyřídíme zbytek od A do Z.'
+                    }
+                  ].map((step, index) => (
+                    <div key={index} className="relative z-10 text-center group reveal">
+                      <div className="bg-white p-10 rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 h-full">
+                        <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center text-white text-3xl font-bold mb-8 mx-auto group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-orange-500/20">
+                          {step.number}
+                        </div>
+                        <h3 className="text-2xl font-bold mb-4 text-gray-900">{step.title}</h3>
+                        <p className="text-gray-600 text-lg leading-relaxed">{step.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Realizations Showcase */}
+            <section className="py-24 bg-gray-50 reveal">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                    Ukázky <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">realizací</span>
+                  </h2>
+                  <p className="text-xl text-gray-600">
+                    Reálné ukázky naší práce – vyklízení, montáže i přeprava.
+                  </p>
+                </div>
+
+                <div className="space-y-16">
+                  {/* Block 1: Vyklízení prostor */}
+                  <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                    <h3 className="text-2xl font-bold mb-8 text-gray-900">Vyklízení prostor</h3>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                      {[
+                        { src: '/before1.jpeg', label: 'PŘED' },
+                        { src: '/after1.jpeg', label: 'PO' },
+                        { src: '/before3.jpeg', label: 'PŘED' },
+                        { src: '/after3.jpeg', label: 'PO' }
+                      ].map((img, i) => (
+                        <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-md">
+                          <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
+                          <span className="absolute top-2 left-2 bg-black/60 text-white text-xs font-bold px-2 py-1 rounded">
+                            {img.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-gray-600 text-lg">
+                      Kompletní vyklizení prostor včetně odvozu a ekologické likvidace.
+                    </p>
+                  </div>
+
+                  {/* Block 2: Montáž nábytku */}
+                  <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                    <h3 className="text-2xl font-bold mb-8 text-gray-900">Montáž nábytku</h3>
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                      {[
+                        { src: '/montage-before.jpeg', label: 'PŘED' },
+                        { src: '/montage-after.jpeg', label: 'PO' }
+                      ].map((img, i) => (
+                        <div key={i} className="relative aspect-[16/9] md:aspect-[4/3] rounded-xl overflow-hidden shadow-md">
+                          <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
+                          <span className="absolute top-2 left-2 bg-black/60 text-white text-xs font-bold px-2 py-1 rounded">
+                            {img.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-gray-600 text-lg">
+                      Demontáž, převoz a opětovná montáž nábytku na nové adrese.
+                    </p>
+                  </div>
+
+                  {/* Block 3: Přeprava */}
+                  <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                    <h3 className="text-2xl font-bold mb-8 text-gray-900">Přeprava</h3>
+                    <div className="max-w-3xl mx-auto mb-6">
+                      <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden shadow-md">
+                        <img src="/transport2.jpeg" alt="Přeprava" className="w-full h-full object-cover" />
+                      </div>
+                    </div>
+                    <p className="text-gray-600 text-lg text-center">
+                      Bezpečný převoz vybavení a nábytku pomocí profesionálně vybaveného vozu.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Reviews Section */}
+            <section className="py-24 bg-white reveal">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
+                  Reference <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">zákazníků</span>
+                </h2>
+
+                <div className="grid md:grid-cols-3 gap-8">
+                  {[
+                    { src: '/Recenze1.JPG', alt: 'Reference 1' },
+                    { src: '/Recenze2.JPG', alt: 'Reference 2' },
+                    { src: '/Recenze3.JPG', alt: 'Reference 3' }
+                  ].map((review, index) => (
+                    <div
+                      key={index}
+                      className="bg-white p-2 rounded-xl shadow-md border border-gray-100 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group"
+                    >
+                      <div className="overflow-hidden rounded-lg">
+                        <img
+                          src={review.src}
+                          alt={review.alt}
+                          className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="py-24 bg-white reveal">
+              <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900">
+                  Začněte <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">bez stresu</span> ještě dnes
+                </h2>
+                <p className="text-xl text-gray-600 mb-10">
+                  Získejte nezávaznou kalkulaci zdarma a nechte starosti na nás.
                 </p>
-
-                <div className="space-y-6">
-                  <a href="tel:+420774876759" className="flex items-center space-x-4 group">
-                    <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-                      <Phone className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500">Telefon</div>
-                      <div className="text-lg font-semibold text-gray-900">+420 774 876 759</div>
-                    </div>
-                  </a>
-
-                  <a href="mailto:stehovanifenix@gmail.com" className="flex items-center space-x-4 group">
-                    <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-                      <Mail className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500">Email</div>
-                      <div className="text-lg font-semibold text-gray-900">stehovanifenix@gmail.com</div>
-                    </div>
-                  </a>
-
-                  <a
-                    href="https://wa.me/420774876759"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-4 group"
-                  >
-                    <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-                      <MessageCircle className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500">WhatsApp</div>
-                      <div className="text-lg font-semibold text-gray-900">Napište nám</div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
-              <div className="absolute top-8 right-8 opacity-10 hover:opacity-30 transition-opacity duration-500 hidden sm:block pointer-events-none">
-                <img 
-                  src="/Stěhování-Fénix-logo.jpg" 
-                  alt="Stěhování Fénix Logo" 
-                  className="h-16 w-auto grayscale rounded-lg" 
-                />
-              </div>
-              <h3 className="text-2xl font-bold mb-6 text-gray-900">Napište nám</h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Jméno a příjmení
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                    placeholder="Jan Novák"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Telefon
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                    placeholder="+420 774 876 759"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    O jakou službu máte zájem?
-                  </label>
-                  <select
-                    required
-                    value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all bg-white"
-                  >
-                    <option value="" disabled>Vyberte službu...</option>
-                    <option value="Stěhování bytu / domu">Stěhování bytu / domu</option>
-                    <option value="Stěhování firmy">Stěhování firmy</option>
-                    <option value="Těžká břemena">Těžká břemena</option>
-                    <option value="Montáž nábytku">Montáž nábytku</option>
-                    <option value="Vyklízení prostor">Vyklízení prostor</option>
-                    <option value="Jiný požadavek">Jiný požadavek</option>
-                  </select>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Odkud
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.from}
-                      onChange={(e) => setFormData({ ...formData, from: e.target.value })}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                      placeholder="Např. Praha 3"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Kam
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.to}
-                      onChange={(e) => setFormData({ ...formData, to: e.target.value })}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                      placeholder="Např. Brno"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Zpráva
-                  </label>
-                  <textarea
-                    required
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all resize-none"
-                    placeholder="Popište nám vaše požadavky na stěhování..."
-                  />
-                </div>
-
                 <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  onClick={scrollToContact}
+                  className="group bg-gradient-to-r from-orange-500 to-red-600 text-white px-10 py-5 rounded-lg text-xl font-bold shadow-2xl hover:shadow-orange-500/50 transform hover:scale-105 transition-all duration-300 inline-flex items-center space-x-2"
                 >
-                  {isSubmitting ? 'Odesílání...' : 'Odeslat nezávaznou poptávku'}
+                  <span>Získat kalkulaci zdarma</span>
+                  <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                 </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  } />
+              </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section className="py-24 bg-white reveal">
+              <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                    Často kladené <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">otázky</span>
+                  </h2>
+                  <p className="text-xl text-gray-600">
+                    Vše, co potřebujete vědět o našich službách a průběhu stěhování.
+                  </p>
+                </div>
+
+                <div className="grid gap-4">
+                  {[
+                    {
+                      q: "Kolik stojí stěhování?",
+                      a: "Cena stěhování se vždy odvíjí od konkrétní zakázky. Záleží především na čase stráveném na zakázce, vzdálenosti mezi adresami, množství věcí a náročnosti stěhování."
+                    },
+                    {
+                      q: "Jak dlouho dopředu je nutné stěhování objednat?",
+                      a: "Termíny řešíme individuálně. Díky naší flexibilitě jsme často schopni zajistit stěhování ještě ten samý den nebo do 24 hodin od poptávky."
+                    },
+                    {
+                      q: "Stěhujete i o víkendech a svátcích?",
+                      a: "Ano, pracujeme nonstop. Stěhování o víkendech, svátcích nebo v nočních hodinách zajišťujeme bez jakýchkoliv příplatků za víkend."
+                    },
+                    {
+                      q: "Jak probíhá nacenění a objednávka?",
+                      a: "Stačí nás kontaktovat telefonicky, přes WhatsApp nebo formulář. Na základě vašich informací připravíme orientační odhad ceny a domluvíme termín."
+                    },
+                    {
+                      q: "Zajistíte i demontáž a montáž nábytku?",
+                      a: "Samozřejmě. Naši pracovníci jsou vybaveni profesionálním nářadím a postarají se o bezpečné rozložení i složení vašeho nábytku."
+                    },
+                    {
+                      q: "Potřebuji přestěhovat jen pár kusů nábytku, je to možné?",
+                      a: "Ano, stěhujeme od jednoho kusu nábytku až po velké domy a firmy. Žádná zakázka pro nás není příliš malá ani příliš velká."
+                    }
+                  ].map((faq, index) => (
+                    <div
+                      key={index}
+                      className={`group bg-white border rounded-2xl transition-all duration-300 ${openFaq === index ? 'border-orange-500 shadow-lg ring-1 ring-orange-500/20' : 'border-gray-100 hover:border-orange-200 hover:shadow-md'}`}
+                    >
+                      <button
+                        onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                        className="w-full flex items-center justify-between p-6 text-left transition-colors"
+                      >
+                        <span className={`text-lg font-bold transition-colors ${openFaq === index ? 'text-orange-600' : 'text-gray-900 group-hover:text-orange-500'}`}>
+                          {faq.q}
+                        </span>
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${openFaq === index ? 'bg-orange-500 text-white rotate-180' : 'bg-gray-100 text-gray-400 group-hover:bg-orange-50 group-hover:text-orange-500'}`}>
+                          <ChevronRight className="w-5 h-5" />
+                        </div>
+                      </button>
+                      <div
+                        className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === index ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
+                      >
+                        <div className="p-6 pt-0 text-gray-600 leading-relaxed text-lg border-t border-gray-50">
+                          {faq.a}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Contact Section */}
+            <section id="contact" className="py-24 bg-gradient-to-br from-gray-50 to-orange-50/30 reveal">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
+                  Kontaktujte <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">nás</span>
+                </h2>
+
+                <div className="grid md:grid-cols-2 gap-12">
+                  {/* Contact Info */}
+                  <div className="space-y-8">
+                    <div className="bg-white p-8 rounded-2xl shadow-lg">
+                      <h3 className="text-2xl font-bold mb-6 text-gray-900">Máte dotazy?</h3>
+                      <p className="text-gray-600 mb-8 leading-relaxed">
+                        Rádi vám poradíme a připravíme cenovou nabídku na míru. Neváhejte nás kontaktovat!
+                      </p>
+
+                      <div className="space-y-6">
+                        <a href="tel:+420774876759" className="flex items-center space-x-4 group">
+                          <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                            <Phone className="w-6 h-6" />
+                          </div>
+                          <div>
+                            <div className="text-sm text-gray-500">Telefon</div>
+                            <div className="text-lg font-semibold text-gray-900">+420 774 876 759</div>
+                          </div>
+                        </a>
+
+                        <a href="mailto:stehovanifenix@gmail.com" className="flex items-center space-x-4 group">
+                          <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                            <Mail className="w-6 h-6" />
+                          </div>
+                          <div>
+                            <div className="text-sm text-gray-500">Email</div>
+                            <div className="text-lg font-semibold text-gray-900">stehovanifenix@gmail.com</div>
+                          </div>
+                        </a>
+
+                        <a
+                          href="https://wa.me/420774876759"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-4 group"
+                        >
+                          <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                            <MessageCircle className="w-6 h-6" />
+                          </div>
+                          <div>
+                            <div className="text-sm text-gray-500">WhatsApp</div>
+                            <div className="text-lg font-semibold text-gray-900">Napište nám</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Contact Form */}
+                  <div className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
+                    <div className="absolute top-8 right-8 opacity-10 hover:opacity-30 transition-opacity duration-500 hidden sm:block pointer-events-none">
+                      <img
+                        src="/Stěhování-Fénix-logo.jpg"
+                        alt="Stěhování Fénix Logo"
+                        className="h-16 w-auto grayscale rounded-lg"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-6 text-gray-900">Napište nám</h3>
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                          Jméno a příjmení
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                          placeholder="Jan Novák"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                          Telefon
+                        </label>
+                        <input
+                          type="tel"
+                          required
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                          placeholder="+420 774 876 759"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                          O jakou službu máte zájem?
+                        </label>
+                        <select
+                          required
+                          value={formData.service}
+                          onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all bg-white"
+                        >
+                          <option value="" disabled>Vyberte službu...</option>
+                          <option value="Stěhování bytu / domu">Stěhování bytu / domu</option>
+                          <option value="Stěhování firmy">Stěhování firmy</option>
+                          <option value="Těžká břemena">Těžká břemena</option>
+                          <option value="Montáž nábytku">Montáž nábytku</option>
+                          <option value="Vyklízení prostor">Vyklízení prostor</option>
+                          <option value="Jiný požadavek">Jiný požadavek</option>
+                        </select>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-700 mb-2">
+                            Odkud
+                          </label>
+                          <input
+                            type="text"
+                            value={formData.from}
+                            onChange={(e) => setFormData({ ...formData, from: e.target.value })}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                            placeholder="Např. Praha 3"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-700 mb-2">
+                            Kam
+                          </label>
+                          <input
+                            type="text"
+                            value={formData.to}
+                            onChange={(e) => setFormData({ ...formData, to: e.target.value })}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                            placeholder="Např. Brno"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                          Zpráva
+                        </label>
+                        <textarea
+                          required
+                          value={formData.message}
+                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                          rows={5}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all resize-none"
+                          placeholder="Popište nám vaše požadavky na stěhování..."
+                        />
+                      </div>
+
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {isSubmitting ? 'Odesílání...' : 'Odeslat nezávaznou poptávku'}
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </>
+        } />
         <Route path="/sluzby" element={
           <div className="py-20 bg-gray-50 min-h-screen">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -860,10 +860,10 @@ function App() {
                     className="group bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300"
                   >
                     <div className="aspect-[16/9] w-full overflow-hidden">
-                      <img 
-                        src={service.image} 
-                        alt={service.title} 
-                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                     <div className="p-8">
@@ -876,7 +876,7 @@ function App() {
 
               {/* CTA SECTION */}
               <div className="mt-20 text-center bg-gradient-to-br from-orange-500 to-red-600 p-12 rounded-3xl shadow-2xl text-white">
-                <h2 className="text-3xl font-bold mb-4">Nevíte si jistí, co přesně potřebujete?</h2>
+                <h2 className="text-3xl font-bold mb-4">Nejste si jistí, co přesně potřebujete?</h2>
                 <p className="text-xl mb-10 opacity-90">Ozvěte se nám a připravíme řešení na míru.</p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <a
@@ -1131,10 +1131,10 @@ function App() {
             {/* Column 1: Brand */}
             <div>
               <div className="flex items-center space-x-2 mb-6">
-                <img 
-                  src="/Stěhování-Fénix-logo.jpg" 
-                  alt="Logo Stěhování Fénix" 
-                  className="h-10 w-auto object-contain rounded" 
+                <img
+                  src="/Stěhování-Fénix-logo.jpg"
+                  alt="Logo Stěhování Fénix"
+                  className="h-10 w-auto object-contain rounded"
                 />
                 <span className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
                   Stěhování Fénix
@@ -1195,9 +1195,9 @@ function App() {
                   </a>
                 </li>
                 <li className="pt-2">
-                  <a 
-                    href="https://www.facebook.com/profile.php?id=61583368424282" 
-                    target="_blank" 
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61583368424282"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center space-x-2 text-gray-400 hover:text-orange-500 transition-colors"
                   >
