@@ -1000,30 +1000,96 @@ function App() {
       </Routes>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-white pt-16 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-6 mb-4 md:mb-0">
-              <div className="flex items-center space-x-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            {/* Column 1: Brand */}
+            <div>
+              <div className="flex items-center space-x-2 mb-6">
                 <img 
                   src="/Stěhování-Fénix-logo.jpg" 
                   alt="Logo Stěhování Fénix" 
                   className="h-10 w-auto object-contain rounded" 
                 />
-                <span className="text-2xl font-bold">Stěhování Fénix</span>
+                <span className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
+                  Stěhování Fénix
+                </span>
               </div>
-              <a 
-                href="https://www.facebook.com/profile.php?id=61583368424282" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-orange-500 transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-6 h-6" />
-              </a>
+              <p className="text-gray-400 leading-relaxed">
+                Jako fénix, který povstává z popela, pomáháme klientům začít novou kapitolu bez starostí. Postaráme se o celé stěhování od A do Z.
+              </p>
             </div>
-            <div className="text-gray-400 text-sm">
-              © 2024 Stěhování Fénix. Všechna práva vyhrazena.
+
+            {/* Column 2: Služby */}
+            <div>
+              <h3 className="text-lg font-bold mb-6 text-white">Naše služby</h3>
+              <ul className="space-y-4 text-gray-400">
+                <li className="hover:text-orange-500 transition-colors">Stěhování bytů a domů</li>
+                <li className="hover:text-orange-500 transition-colors">Stěhování firem</li>
+                <li className="hover:text-orange-500 transition-colors">Těžká břemena</li>
+                <li className="hover:text-orange-500 transition-colors">Montáž nábytku</li>
+                <li className="hover:text-orange-500 transition-colors">Vyklízení prostor</li>
+              </ul>
+            </div>
+
+            {/* Column 3: Rychlé odkazy */}
+            <div>
+              <h3 className="text-lg font-bold mb-6 text-white">Rychlé odkazy</h3>
+              <ul className="space-y-4 text-gray-400">
+                <li><Link to="/" className="hover:text-orange-500 transition-colors">Úvod</Link></li>
+                <li><Link to="/sluzby" className="hover:text-orange-500 transition-colors">Naše služby</Link></li>
+                <li><Link to="/cenik" className="hover:text-orange-500 transition-colors">Ceník</Link></li>
+                <li><button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-orange-500 transition-colors">Kontakt</button></li>
+              </ul>
+            </div>
+
+            {/* Column 4: Kontakt */}
+            <div>
+              <h3 className="text-lg font-bold mb-6 text-white">Kontakt</h3>
+              <ul className="space-y-4 text-gray-400">
+                <li className="flex items-start space-x-3">
+                  <MapPin className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
+                  <span>Praha a okolí / ČR a Evropa</span>
+                </li>
+                <li>
+                  <a href="tel:+420774876759" className="flex items-center space-x-3 hover:text-orange-500 transition-colors">
+                    <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                    <span>+420 774 876 759</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:stehovanifenix@gmail.com" className="flex items-center space-x-3 hover:text-orange-500 transition-colors">
+                    <Mail className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                    <span>stehovanifenix@gmail.com</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://wa.me/420774876759" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-orange-500 transition-colors">
+                    <MessageCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                    <span>WhatsApp</span>
+                  </a>
+                </li>
+                <li className="pt-2">
+                  <a 
+                    href="https://www.facebook.com/profile.php?id=61583368424282" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-2 text-gray-400 hover:text-orange-500 transition-colors"
+                  >
+                    <Facebook className="w-5 h-5" />
+                    <span>Facebook</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <div className="text-gray-500 text-sm">
+              © 2026 Stěhování Fénix. Všechna práva vyhrazena.
+            </div>
+            <div className="text-gray-500 text-xs uppercase tracking-widest hidden md:block">
+              Spolehlivost • Rychlost • Tradice
             </div>
           </div>
         </div>
