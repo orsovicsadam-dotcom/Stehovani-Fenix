@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
+      <nav className="sticky top-0 w-full z-50 bg-white shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center space-x-2">
@@ -70,7 +70,7 @@ function App() {
         <Route path="/" element={
           <>
             {/* Hero Section */}
-            <section className="relative h-[85vh] flex items-center overflow-hidden bg-gray-900">
+            <section className="relative h-[80vh] flex items-center overflow-hidden bg-gray-900">
               <div className="absolute inset-0">
                 <img 
                   src="/Hero-image.jpg" 
@@ -688,7 +688,7 @@ function App() {
     </>
   } />
         <Route path="/sluzby" element={
-          <div className="pt-32 pb-20 bg-gray-50 min-h-screen">
+          <div className="py-20 bg-gray-50 min-h-screen">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
@@ -802,7 +802,7 @@ function App() {
           </div>
         } />
         <Route path="/cenik" element={
-          <div className="pt-32 pb-20 bg-gray-50 min-h-screen">
+          <div className="py-20 bg-gray-50 min-h-screen">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
