@@ -4,7 +4,7 @@ import { Link, Routes, Route, useLocation } from 'react-router-dom';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', phone: '', service: '', from: '', to: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const location = useLocation();
@@ -26,7 +26,7 @@ function App() {
     setIsSubmitting(true);
     setTimeout(() => {
       alert('Děkujeme! Brzy se vám ozveme.');
-      setFormData({ name: '', phone: '', message: '' });
+      setFormData({ name: '', phone: '', service: '', from: '', to: '', message: '' });
       setIsSubmitting(false);
     }, 1000);
   };
@@ -251,16 +251,16 @@ function App() {
       {/* Pricing Information */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100">
-            <h2 className="text-4xl font-bold mb-8 text-gray-900 text-center">
+          <div className="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100 text-center">
+            <h2 className="text-4xl font-bold mb-8 text-gray-900">
               Kolik stojí <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">stěhování</span>?
             </h2>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-              <p className="text-xl font-medium text-gray-900 text-center">
-                Cena se vždy odvíjí od konkrétní zakázky. Nedá se určit jednotná částka předem.
+              <p className="text-xl font-medium text-gray-900">
+                Cena stěhování se vždy odvíjí od konkrétní zakázky.
               </p>
-              <p className="text-center">Záleží především na:</p>
-              <ul className="grid sm:grid-cols-2 gap-4">
+              <p>Záleží především na:</p>
+              <ul className="grid sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
                 {[
                   'čase stráveném na zakázce',
                   'vzdálenosti mezi adresami',
@@ -273,9 +273,23 @@ function App() {
                   </li>
                 ))}
               </ul>
-              <p className="text-center pt-6 font-semibold text-gray-900 border-t border-gray-100">
-                Každou zakázku naceníme individuálně na základě informací od vás.
-              </p>
+              <div className="pt-6 space-y-6 border-t border-gray-100">
+                <p className="font-semibold text-gray-900">
+                  Každou zakázku naceníme individuálně na základě vašich požadavků.
+                </p>
+                <p>
+                  Pro lepší představu si můžete prohlédnout náš orientační ceník.
+                </p>
+                <div className="pt-4">
+                  <Link
+                    to="/cenik"
+                    className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-lg font-bold shadow-lg hover:shadow-orange-500/50 transform hover:scale-105 transition-all duration-300"
+                  >
+                    <span>Zobrazit ceník</span>
+                    <ChevronRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -445,6 +459,61 @@ function App() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
+            Často kladené <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">otázky</span>
+          </h2>
+          
+          <div className="space-y-4">
+            {[
+              {
+                q: "Kolik stojí stěhování?",
+                a: "Cena závisí na čase, vzdálenosti, množství věcí a náročnosti zakázky."
+              },
+              {
+                q: "Jak dlouho dopředu objednat?",
+                a: "Individuálně. Často je možné zajistit stěhování i ve stejný den."
+              },
+              {
+                q: "Stěhujete o víkendech a svátcích?",
+                a: "Ano, pracujeme i o víkendech, svátcích a po domluvě i v noci."
+              },
+              {
+                q: "Jak řešíte těžké věci?",
+                a: "Individuálně podle váhy a podmínek. Na základě informací uděláme odhad ceny."
+              },
+              {
+                q: "Jak probíhá objednávka?",
+                a: "Zavoláte nebo napíšete, popíšete zakázku a my připravíme odhad ceny."
+              },
+              {
+                q: "Je cena pevná?",
+                a: "Pevná cena je možná, ale bývá vyšší. Obvykle pracujeme s odhadem."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="border border-gray-200 rounded-xl overflow-hidden">
+                <button
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  className="w-full flex items-center justify-between p-5 text-left bg-white hover:bg-gray-50 transition-colors"
+                >
+                  <span className="font-bold text-gray-900">{faq.q}</span>
+                  <ChevronRight className={`w-5 h-5 text-orange-500 transition-transform duration-300 ${openFaq === index ? 'rotate-90' : ''}`} />
+                </button>
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+                >
+                  <div className="p-5 pt-0 text-gray-600 leading-relaxed border-t border-gray-50">
+                    {faq.a}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-orange-50/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -534,6 +603,53 @@ function App() {
 
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    O jakou službu máte zájem?
+                  </label>
+                  <select
+                    required
+                    value={formData.service}
+                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all bg-white"
+                  >
+                    <option value="" disabled>Vyberte službu...</option>
+                    <option value="Stěhování bytu / domu">Stěhování bytu / domu</option>
+                    <option value="Stěhování firmy">Stěhování firmy</option>
+                    <option value="Těžká břemena">Těžká břemena</option>
+                    <option value="Montáž nábytku">Montáž nábytku</option>
+                    <option value="Vyklízení prostor">Vyklízení prostor</option>
+                    <option value="Jiný požadavek">Jiný požadavek</option>
+                  </select>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Odkud
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.from}
+                      onChange={(e) => setFormData({ ...formData, from: e.target.value })}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                      placeholder="Např. Praha 3"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Kam
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.to}
+                      onChange={(e) => setFormData({ ...formData, to: e.target.value })}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                      placeholder="Např. Brno"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Zpráva
                   </label>
                   <textarea
@@ -555,61 +671,6 @@ function App() {
                 </button>
               </form>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            Často kladené <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">otázky</span>
-          </h2>
-          
-          <div className="space-y-4">
-            {[
-              {
-                q: "Kolik stojí stěhování?",
-                a: "Cena závisí na čase, vzdálenosti, množství věcí a náročnosti zakázky."
-              },
-              {
-                q: "Jak dlouho dopředu objednat?",
-                a: "Individuálně. Často je možné zajistit stěhování i ve stejný den."
-              },
-              {
-                q: "Stěhujete o víkendech a svátcích?",
-                a: "Ano, pracujeme i o víkendech, svátcích a po domluvě i v noci."
-              },
-              {
-                q: "Jak řešíte těžké věci?",
-                a: "Individuálně podle váhy a podmínek. Na základě informací uděláme odhad ceny."
-              },
-              {
-                q: "Jak probíhá objednávka?",
-                a: "Zavoláte nebo napíšete, popíšete zakázku a my připravíme odhad ceny."
-              },
-              {
-                q: "Je cena pevná?",
-                a: "Pevná cena je možná, ale bývá vyšší. Obvykle pracujeme s odhadem."
-              }
-            ].map((faq, index) => (
-              <div key={index} className="border border-gray-200 rounded-xl overflow-hidden">
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-5 text-left bg-white hover:bg-gray-50 transition-colors"
-                >
-                  <span className="font-bold text-gray-900">{faq.q}</span>
-                  <ChevronRight className={`w-5 h-5 text-orange-500 transition-transform duration-300 ${openFaq === index ? 'rotate-90' : ''}`} />
-                </button>
-                <div 
-                  className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
-                >
-                  <div className="p-5 pt-0 text-gray-600 leading-relaxed border-t border-gray-50">
-                    {faq.a}
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
