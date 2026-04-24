@@ -198,45 +198,51 @@ function App() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: <Package className="w-10 h-10" />,
+                image: '/image1.jpg',
                 title: 'Stěhování bytů a domů',
                 description: 'Kompletní stěhování domácností rychle a bez starostí.'
               },
               {
-                icon: <Users className="w-10 h-10" />,
+                image: '/image2.jpg',
                 title: 'Stěhování firem',
                 description: 'Přestěhujeme kanceláře i celé provozy.'
               },
               {
-                icon: <Truck className="w-10 h-10" />,
+                image: '/image3.jpg',
                 title: 'Těžká břemena',
                 description: 'Zajistíme bezpečný přesun těžkých věcí.'
               },
               {
-                icon: <Sofa className="w-10 h-10" />,
+                image: '/image4.jpg',
                 title: 'Montáž nábytku',
                 description: 'Nábytek rozebereme i znovu složíme.'
               },
               {
-                icon: <Warehouse className="w-10 h-10" />,
+                image: '/image5.jpg',
                 title: 'Převoz zboží',
                 description: 'Dovezeme nákup z obchodů jako Hornbach nebo Sconto.'
               },
               {
-                icon: <Trash2 className="w-10 h-10" />,
+                image: '/image7.jpg',
                 title: 'Likvidace pozůstalostí',
                 description: 'Pomůžeme s vyklizením a odvozem věcí.'
               }
             ].map((service, index) => (
               <div
                 key={index}
-                className="text-center group hover:bg-gradient-to-br hover:from-orange-50 hover:to-red-50 p-8 rounded-2xl transition-all duration-300"
+                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center text-white mb-6 mx-auto group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  {service.icon}
+                <div className="aspect-[16/9] w-full overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
+                  />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                <div className="p-8 text-center">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -696,60 +702,66 @@ function App() {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
                   {
-                    icon: <Package className="w-10 h-10" />,
+                    image: '/image1.jpg',
                     title: 'Stěhování bytů a domů',
                     description: 'Postaráme se o kompletní stěhování vaší domácnosti. Od naložení až po vyložení na nové adrese – rychle, bezpečně a bez zbytečných starostí.'
                   },
                   {
-                    icon: <Users className="w-10 h-10" />,
+                    image: '/image2.jpg',
                     title: 'Stěhování firem',
                     description: 'Zajistíme stěhování kanceláří, skladů i celých provozů. Pracujeme efektivně, abychom co nejméně narušili váš chod firmy.'
                   },
                   {
-                    icon: <Truck className="w-10 h-10" />,
+                    image: '/image3.jpg',
                     title: 'Těžká břemena',
                     description: 'Máme zkušenosti se stěhováním těžkých věcí jako jsou trezory, stroje nebo klavíry. Každou zakázku řešíme individuálně podle náročnosti.'
                   },
                   {
-                    icon: <Sofa className="w-10 h-10" />,
+                    image: '/image4.jpg',
                     title: 'Montáž a demontáž nábytku',
                     description: 'Nábytek rozebereme, bezpečně převezeme a znovu složíme na novém místě. Nemusíte se o nic starat.'
                   },
                   {
-                    icon: <MapPin className="w-10 h-10" />,
+                    image: '/image5.jpg',
                     title: 'Převoz zboží z obchodů',
                     description: 'Dovezeme nákup z obchodů jako Hornbach, Sconto a dalších. Zajistíme odvoz i vynesení až k vám domů.'
                   },
                   {
-                    icon: <Warehouse className="w-10 h-10" />,
+                    image: '/image6.jpg',
                     title: 'Převoz palet a zboží pro firmy',
                     description: 'Zajišťujeme převoz palet a dalšího zboží pro firmy po celé ČR i Evropě.'
                   },
                   {
-                    icon: <Trash2 className="w-10 h-10" />,
+                    image: '/image7.jpg',
                     title: 'Likvidace pozůstalostí',
                     description: 'Pomůžeme s vyklizením bytů nebo domů včetně odvozu a ekologické likvidace věcí.'
                   },
                   {
-                    icon: <ChevronRight className="w-10 h-10" />,
+                    image: '/image8.jpg',
                     title: 'Stěhování v rámci budovy',
                     description: 'Potřebujete přesunout věci jen v rámci jedné budovy? Žádný problém – zajistíme rychlý a bezpečný přesun.'
                   },
                   {
-                    icon: <Sofa className="w-10 h-10" />,
+                    image: '/image9.jpg',
                     title: 'Samostatná montáž nábytku',
                     description: 'Možnost objednat pouze montáž nebo demontáž nábytku bez stěhování.'
                   }
                 ].map((service, index) => (
                   <div
                     key={index}
-                    className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300"
+                    className="group bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300"
                   >
-                    <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-all duration-300">
-                      {service.icon}
+                    <div className="aspect-[16/9] w-full overflow-hidden">
+                      <img 
+                        src={service.image} 
+                        alt={service.title} 
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
+                      />
                     </div>
-                    <h3 className="text-2xl font-bold mb-4 text-gray-900">{service.title}</h3>
-                    <p className="text-gray-600 leading-relaxed text-lg">{service.description}</p>
+                    <div className="p-8">
+                      <h3 className="text-2xl font-bold mb-4 text-gray-900">{service.title}</h3>
+                      <p className="text-gray-600 leading-relaxed text-lg">{service.description}</p>
+                    </div>
                   </div>
                 ))}
               </div>
