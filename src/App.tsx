@@ -1,13 +1,40 @@
 import { Phone, Mail, MapPin, Shield, Euro, Truck, Package, Users, CheckCircle, Sofa, Trash2, Warehouse, ChevronRight, MessageCircle, Facebook } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Link, Routes, Route, useLocation } from 'react-router-dom';
+import { NavLink, Link, Routes, Route, useLocation } from 'react-router-dom';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '', service: '', from: '', to: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [activeSection, setActiveSection] = useState('');
   const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setActiveSection('');
+      return;
+    }
+
+    const sections = ['hero', 'services-preview', 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -52,9 +79,31 @@ function App() {
               </span>
             </div>
             <div className="hidden md:flex items-center space-x-8 text-gray-700 font-semibold">
-              <Link to="/" className="hover:text-orange-600 transition-colors">Úvod</Link>
-              <Link to="/sluzby" className="hover:text-orange-600 transition-colors">Naše služby</Link>
-              <Link to="/cenik" className="hover:text-orange-600 transition-colors">Ceník</Link>
+              <NavLink 
+                to="/" 
+                end
+                className={({ isActive }) => 
+                  `transition-colors py-2 border-b-2 ${isActive && (activeSection === 'hero' || activeSection === '') ? 'text-orange-600 border-orange-600' : 'border-transparent hover:text-orange-600'}`
+                }
+              >
+                Úvod
+              </NavLink>
+              <NavLink 
+                to="/sluzby" 
+                className={({ isActive }) => 
+                  `transition-colors py-2 border-b-2 ${isActive ? 'text-orange-600 border-orange-600' : 'border-transparent hover:text-orange-600'}`
+                }
+              >
+                Naše služby
+              </NavLink>
+              <NavLink 
+                to="/cenik" 
+                className={({ isActive }) => 
+                  `transition-colors py-2 border-b-2 ${isActive ? 'text-orange-600 border-orange-600' : 'border-transparent hover:text-orange-600'}`
+                }
+              >
+                Ceník
+              </NavLink>
             </div>
             <button
               onClick={scrollToContact}
@@ -70,7 +119,7 @@ function App() {
         <Route path="/" element={
           <>
             {/* Hero Section */}
-            <section className="relative h-[80vh] flex items-center overflow-hidden bg-gray-900">
+            <section id="hero" className="relative h-[80vh] flex items-center overflow-hidden bg-gray-900">
               <div className="absolute inset-0">
                 <img 
                   src="/Hero-image.jpg" 
@@ -171,6 +220,11 @@ function App() {
                 icon: <Shield className="w-8 h-8" />,
                 title: 'Kompletní servis',
                 description: 'Zajistíme stěhování, montáže i další služby.'
+              },
+              {
+                icon: <MapPin className="w-8 h-8" />,
+                title: 'Stěhování po celé ČR i Evropě',
+                description: 'Zajišťujeme stěhování nejen po Česku, ale i po celé Evropě bezpečně a spolehlivě.'
               }
             ].map((item, index) => (
               <div
@@ -189,7 +243,7 @@ function App() {
       </section>
 
       {/* Services */}
-      <section className="py-20 bg-white">
+      <section id="services-preview" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
             Naše <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">služby</span>
@@ -581,7 +635,14 @@ function App() {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
+            <div className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
+              <div className="absolute top-8 right-8 opacity-10 hover:opacity-30 transition-opacity duration-500 hidden sm:block pointer-events-none">
+                <img 
+                  src="/Stěhování-Fénix-logo.jpg" 
+                  alt="Stěhování Fénix Logo" 
+                  className="h-16 w-auto grayscale rounded-lg" 
+                />
+              </div>
               <h3 className="text-2xl font-bold mb-6 text-gray-900">Napište nám</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
