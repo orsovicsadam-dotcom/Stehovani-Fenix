@@ -222,7 +222,7 @@ function App() {
                     </span>
                   </h1>
                   <p className="text-xl sm:text-2xl text-gray-200 mb-12 max-w-2xl leading-relaxed">
-                    Rychlé termíny, férový odhad ceny a zkušenosti i s těžkými břemeny. Často zvládneme stěhování ještě ten den.
+                    Rychlé termíny, férový odhad ceny a zkušenosti i s těžkými břemeny.
                   </p>
                   <div className="flex flex-col sm:flex-row items-center justify-start gap-4">
                     <a
@@ -273,7 +273,7 @@ function App() {
             <section className="py-24 bg-gradient-to-br from-gray-50 to-orange-50/30 reveal">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
-                  Proč si vybrat <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">Fénix</span>?
+                  Proč si vybrat <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">právě nás</span>?
                 </h2>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
