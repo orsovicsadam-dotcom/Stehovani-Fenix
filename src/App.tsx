@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Shield, Euro, Truck, Package, Users, CheckCircle, Sofa, Trash2, Warehouse, ChevronRight, MessageCircle, Facebook, ArrowUp } from 'lucide-react';
+import { Phone, Mail, MapPin, Shield, Euro, Truck, Package, Users, CheckCircle, Sofa, Trash2, Warehouse, ChevronRight, MessageCircle, Facebook, ArrowUp, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { NavLink, Link, Routes, Route, useLocation } from 'react-router-dom';
 
@@ -9,6 +9,7 @@ function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeSection, setActiveSection] = useState('');
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -134,14 +135,66 @@ function App() {
                 Ceník
               </NavLink>
             </div>
-            <button
-              onClick={scrollToContact}
-              className="hidden sm:block bg-gradient-to-r from-orange-500 to-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            >
-              Kontaktujte nás
-            </button>
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={scrollToContact}
+                className="hidden md:block bg-gradient-to-r from-orange-500 to-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              >
+                Kontaktujte nás
+              </button>
+              <button
+                className="md:hidden text-gray-700 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-100 animate-fade-in">
+            <div className="px-4 pt-2 pb-6 space-y-1">
+              <NavLink
+                to="/"
+                end
+                onClick={() => setIsMenuOpen(false)}
+                className={({ isActive }) =>
+                  `block px-4 py-3 rounded-xl text-base font-semibold transition-all ${
+                    isActive && (activeSection === 'hero' || activeSection === '')
+                      ? 'bg-orange-50 text-orange-600'
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`
+                }
+              >
+                Úvod
+              </NavLink>
+              <NavLink
+                to="/sluzby"
+                onClick={() => setIsMenuOpen(false)}
+                className={({ isActive }) =>
+                  `block px-4 py-3 rounded-xl text-base font-semibold transition-all ${
+                    isActive ? 'bg-orange-50 text-orange-600' : 'text-gray-700 hover:bg-gray-50'
+                  }`
+                }
+              >
+                Naše služby
+              </NavLink>
+              <NavLink
+                to="/cenik"
+                onClick={() => setIsMenuOpen(false)}
+                className={({ isActive }) =>
+                  `block px-4 py-3 rounded-xl text-base font-semibold transition-all ${
+                    isActive ? 'bg-orange-50 text-orange-600' : 'text-gray-700 hover:bg-gray-50'
+                  }`
+                }
+              >
+                Ceník
+              </NavLink>
+            </div>
+          </div>
+        )}
       </nav>
 
       <Routes>
@@ -320,6 +373,7 @@ function App() {
                           src={service.image}
                           alt={service.title}
                           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
                         />
                       </div>
                       <div className="p-8 text-center">
@@ -460,7 +514,7 @@ function App() {
                         { src: '/after3.jpeg', label: 'PO' }
                       ].map((img, i) => (
                         <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-md">
-                          <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
+                          <img src={img.src} alt={img.label} className="w-full h-full object-cover" loading="lazy" />
                           <span className="absolute top-2 left-2 bg-black/60 text-white text-xs font-bold px-2 py-1 rounded">
                             {img.label}
                           </span>
@@ -481,7 +535,7 @@ function App() {
                         { src: '/montage-after.jpeg', label: 'PO' }
                       ].map((img, i) => (
                         <div key={i} className="relative aspect-[16/9] md:aspect-[4/3] rounded-xl overflow-hidden shadow-md">
-                          <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
+                          <img src={img.src} alt={img.label} className="w-full h-full object-cover" loading="lazy" />
                           <span className="absolute top-2 left-2 bg-black/60 text-white text-xs font-bold px-2 py-1 rounded">
                             {img.label}
                           </span>
@@ -498,7 +552,7 @@ function App() {
                     <h3 className="text-2xl font-bold mb-8 text-gray-900">Přeprava</h3>
                     <div className="max-w-3xl mx-auto mb-6">
                       <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden shadow-md">
-                        <img src="/transport2.jpeg" alt="Přeprava" className="w-full h-full object-cover" />
+                        <img src="/transport2.jpeg" alt="Přeprava" className="w-full h-full object-cover" loading="lazy" />
                       </div>
                     </div>
                     <p className="text-gray-600 text-lg text-center">
@@ -864,6 +918,7 @@ function App() {
                         src={service.image}
                         alt={service.title}
                         className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
                       />
                     </div>
                     <div className="p-8">
