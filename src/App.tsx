@@ -6,6 +6,7 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '', service: '', from: '', to: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeSection, setActiveSection] = useState('');
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -78,17 +79,37 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
+  
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      alert('Děkujeme! Brzy se vám ozveme.');
-      setFormData({ name: '', phone: '', service: '', from: '', to: '', message: '' });
-      setIsSubmitting(false);
-    }, 1000);
-  };
+    setShowSuccess(false);
 
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setFormData({ name: '', phone: '', service: '', from: '', to: '', message: '' });
+        setShowSuccess(true);
+        form.reset();
+      } else {
+        alert("Došlo k chybě. Zkuste to prosím znovu.");
+      }
+    } catch (error) {
+      alert("Došlo k chybě. Zkuste to prosím znovu.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const scrollToContact = () => {
     if (location.pathname !== '/') {
       navigate('/');
@@ -806,13 +827,22 @@ function App() {
                       />
                     </div>
                     <h3 className="text-2xl font-bold mb-6 text-gray-900">Napište nám</h3>
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form
+                      id="contact-form"
+                      action="https://formspree.io/f/mojyzbga"
+                      method="POST"
+                      onSubmit={handleSubmit}
+                      className="space-y-6"
+                    >
+                      <input type="hidden" name="_subject" value="Nová poptávka - Stěhování Fénix" />
+                      <input type="hidden" name="_next" value="https://stehovanifenix.cz/dekujeme" />
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
                           Jméno a příjmení
                         </label>
                         <input
                           type="text"
+                          name="name"
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -827,6 +857,7 @@ function App() {
                         </label>
                         <input
                           type="tel"
+                          name="phone"
                           required
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -840,6 +871,7 @@ function App() {
                           O jakou službu máte zájem?
                         </label>
                         <select
+                          name="service"
                           required
                           value={formData.service}
                           onChange={(e) => setFormData({ ...formData, service: e.target.value })}
@@ -862,6 +894,8 @@ function App() {
                           </label>
                           <input
                             type="text"
+                            name="from"
+                            required
                             value={formData.from}
                             onChange={(e) => setFormData({ ...formData, from: e.target.value })}
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
@@ -874,6 +908,8 @@ function App() {
                           </label>
                           <input
                             type="text"
+                            name="to"
+                            required
                             value={formData.to}
                             onChange={(e) => setFormData({ ...formData, to: e.target.value })}
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
@@ -887,6 +923,7 @@ function App() {
                           Zpráva
                         </label>
                         <textarea
+                          name="message"
                           required
                           value={formData.message}
                           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -903,6 +940,13 @@ function App() {
                       >
                         {isSubmitting ? 'Odesílání...' : 'Odeslat nezávaznou poptávku'}
                       </button>
+
+                      {showSuccess && (
+                        <div id="form-success" className="mt-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl animate-fade-in flex items-center space-x-2">
+                          <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                          <span>✅ Děkujeme! Vaše poptávka byla odeslána. Ozveme se vám co nejdříve.</span>
+                        </div>
+                      )}
                     </form>
                   </div>
                 </div>
