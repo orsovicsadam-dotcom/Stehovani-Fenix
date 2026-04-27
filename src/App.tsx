@@ -1,6 +1,6 @@
 import { Phone, Mail, MapPin, Shield, Euro, Truck, Package, Users, CheckCircle, Sofa, Trash2, Warehouse, ChevronRight, MessageCircle, Facebook, ArrowUp, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { NavLink, Link, Routes, Route, useLocation } from 'react-router-dom';
+import { NavLink, Link, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,6 +11,7 @@ function App() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +47,7 @@ function App() {
       return;
     }
 
-    const sections = ['hero', 'services-preview', 'contact'];
+    const sections = ['hero', 'services-preview', 'recenze', 'contact'];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -89,7 +90,25 @@ function App() {
   };
 
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToReviews = () => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById('recenze')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById('recenze')?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -112,6 +131,7 @@ function App() {
               <NavLink
                 to="/"
                 end
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className={({ isActive }) =>
                   `transition-colors py-2 border-b-2 ${isActive && (activeSection === 'hero' || activeSection === '') ? 'text-orange-600 border-orange-600' : 'border-transparent hover:text-orange-600'}`
                 }
@@ -126,6 +146,12 @@ function App() {
               >
                 Naše služby
               </NavLink>
+              <button
+                onClick={scrollToReviews}
+                className={`transition-colors py-2 border-b-2 ${activeSection === 'recenze' ? 'text-orange-600 border-orange-600' : 'border-transparent hover:text-orange-600'}`}
+              >
+                Recenze
+              </button>
               <NavLink
                 to="/cenik"
                 className={({ isActive }) =>
@@ -159,7 +185,10 @@ function App() {
               <NavLink
                 to="/"
                 end
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className={({ isActive }) =>
                   `block px-4 py-3 rounded-xl text-base font-semibold transition-all ${
                     isActive && (activeSection === 'hero' || activeSection === '')
@@ -181,6 +210,19 @@ function App() {
               >
                 Naše služby
               </NavLink>
+              <button
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  scrollToReviews();
+                }}
+                className={`block w-full text-left px-4 py-3 rounded-xl text-base font-semibold transition-all ${
+                  activeSection === 'recenze'
+                    ? 'bg-orange-50 text-orange-600'
+                    : 'text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                Recenze
+              </button>
               <NavLink
                 to="/cenik"
                 onClick={() => setIsMenuOpen(false)}
@@ -556,7 +598,7 @@ function App() {
                       </div>
                     </div>
                     <p className="text-gray-600 text-lg text-center">
-                      Bezpečný převoz vybavení a nábytku pomocí profesionálně vybaveného vozu.
+                      Bezpečná přeprava divadelních kulis a hudebních nástrojů.
                     </p>
                   </div>
                 </div>
@@ -564,7 +606,7 @@ function App() {
             </section>
 
             {/* Reviews Section */}
-            <section className="py-24 bg-white reveal">
+            <section id="recenze" className="py-24 bg-white reveal">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
                   Reference <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">zákazníků</span>
@@ -1110,7 +1152,7 @@ function App() {
                       'Patra neúčtujeme navíc (pokud se nejedná o věci nad 100 kg)',
                       'Možnost objednat pouze montáž nábytku nebo stěhování v rámci budovy',
                       'Zajišťujeme i převoz zboží z obchodů (Hornbach, Sconto apod.)',
-                      'Možnost převozu palet pro firmy',
+                      'Možnost paletové dopravy',
                       'Likvidace pozůstalostí dle hodinové sazby + čas na sběrném dvoře'
                     ].map((info, index) => (
                       <div key={index} className="flex items-start space-x-3 text-gray-600">

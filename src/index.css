@@ -37,3 +37,9 @@
 .hover-lift {
   @apply transition-transform duration-300 hover:-translate-y-2;
 }
+
+@media (min-width: 768px) {
+  #recenze {
+    scroll-margin-top: 100px;
+  }
+}
