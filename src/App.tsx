@@ -146,6 +146,14 @@ function App() {
               >
                 Naše služby
               </NavLink>
+              <NavLink
+                to="/galerie"
+                className={({ isActive }) =>
+                  `transition-colors py-2 border-b-2 ${isActive ? 'text-orange-600 border-orange-600' : 'border-transparent hover:text-orange-600'}`
+                }
+              >
+                Galerie
+              </NavLink>
               <button
                 onClick={scrollToReviews}
                 className={`transition-colors py-2 border-b-2 ${activeSection === 'recenze' ? 'text-orange-600 border-orange-600' : 'border-transparent hover:text-orange-600'}`}
@@ -209,6 +217,17 @@ function App() {
                 }
               >
                 Naše služby
+              </NavLink>
+              <NavLink
+                to="/galerie"
+                onClick={() => setIsMenuOpen(false)}
+                className={({ isActive }) =>
+                  `block px-4 py-3 rounded-xl text-base font-semibold transition-all ${
+                    isActive ? 'bg-orange-50 text-orange-600' : 'text-gray-700 hover:bg-gray-50'
+                  }`
+                }
+              >
+                Galerie
               </NavLink>
               <button
                 onClick={() => {
@@ -1219,6 +1238,138 @@ function App() {
             </div>
           </div>
         } />
+1222:       <Route path="/galerie" element={
+        <div className="py-20 bg-gray-50 min-h-screen">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                Ukázky <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">realizací</span>
+              </h1>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Podívejte se na ukázky naší práce z reálných zakázek. Každé stěhování je jiné, ale ke každému přistupujeme s maximální péčí.
+              </p>
+            </div>
+
+            <div className="space-y-20">
+              {/* SECTION 1: VYKLÍZENÍ PŮDY */}
+              <section className="reveal">
+                <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                  <h2 className="text-3xl font-bold mb-8 text-gray-900">Vyklízení půdy</h2>
+                  <div className="grid md:grid-cols-2 gap-6 mb-8">
+                    {[
+                      { src: '/before2.jpeg', label: 'Před' },
+                      { src: '/after2.jpeg', label: 'Po' }
+                    ].map((img, i) => (
+                      <div key={i} className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group">
+                        <img 
+                          src={img.src} 
+                          alt={`Vyklízení půdy - ${img.label}`} 
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                        />
+                        <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-lg font-bold">
+                          {img.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    Ukázka vyklízení půdních prostor včetně kompletního odvozu odpadu a úklidu.
+                  </p>
+                </div>
+              </section>
+
+              {/* SECTION 2: MONTÁŽ NÁBYTKU */}
+              <section className="reveal">
+                <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                  <h2 className="text-3xl font-bold mb-8 text-gray-900">Montáž nábytku</h2>
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    {[
+                      { src: '/montage-before1.jpeg', label: 'Před' },
+                      { src: '/montage-before2.jpeg', label: 'Před' },
+                      { src: '/montage-before3.jpeg', label: 'Před' },
+                      { src: '/montage-after2.jpeg', label: 'Po' }
+                    ].map((img, i) => (
+                      <div key={i} className="relative aspect-square sm:aspect-[4/3] rounded-xl overflow-hidden shadow-md group">
+                        <img 
+                          src={img.src} 
+                          alt={`Montáž nábytku - ${img.label}`} 
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                        />
+                        <div className={`absolute top-2 left-2 px-3 py-1 rounded-md text-xs font-bold text-white ${img.label === 'Před' ? 'bg-black/60' : 'bg-orange-600'}`}>
+                          {img.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    Montáž a demontáž nábytku v rámci stěhování. Každý kus pečlivě připravíme a znovu sestavíme na novém místě.
+                  </p>
+                </div>
+              </section>
+
+              {/* SECTION 3: MONTÁŽ NÁBYTKU – DALŠÍ REALIZACE */}
+              <section className="reveal">
+                <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                  <h2 className="text-3xl font-bold mb-8 text-gray-900">Montáž nábytku – další realizace</h2>
+                  <div className="grid md:grid-cols-2 gap-6 mb-8">
+                    {[
+                      { src: '/montage3.jpeg', label: 'Před' },
+                      { src: '/montage4.jpeg', label: 'Po' }
+                    ].map((img, i) => (
+                      <div key={i} className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group">
+                        <img 
+                          src={img.src} 
+                          alt={`Další realizace - ${img.label}`} 
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                        />
+                        <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-lg font-bold">
+                          {img.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    Další ukázka montáže nábytku včetně finálního sestavení a usazení.
+                  </p>
+                </div>
+              </section>
+            </div>
+
+            {/* CTA SECTION */}
+            <div className="mt-20 text-center bg-gradient-to-br from-orange-500 to-red-600 p-12 rounded-3xl shadow-2xl text-white reveal">
+              <h2 className="text-3xl font-bold mb-4">Líbí se vám naše práce?</h2>
+              <p className="text-xl mb-10 opacity-90">Rádi pomůžeme i vám s vaším stěhováním nebo vyklízením.</p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link
+                  to="/"
+                  onClick={() => {
+                    setTimeout(() => {
+                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  className="w-full sm:w-auto bg-white text-gray-900 px-8 py-4 rounded-lg text-lg font-bold shadow-xl hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
+                >
+                  <span>Nezávazná poptávka</span>
+                  <ChevronRight className="w-5 h-5 text-orange-600" />
+                </Link>
+                <a
+                  href="tel:+420774876759"
+                  className="w-full sm:w-auto bg-gray-900 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl hover:bg-black transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2"
+                >
+                  <Phone className="w-5 h-5" />
+                  <span>Zavolat</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-12 text-center">
+              <Link to="/" className="text-gray-500 hover:text-orange-600 font-semibold transition-colors flex items-center justify-center space-x-2">
+                <span>Zpět na úvodní stránku</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      } />
       </Routes>
 
       {/* Footer */}
@@ -1260,6 +1411,7 @@ function App() {
               <ul className="space-y-4 text-gray-400">
                 <li><Link to="/" className="hover:text-orange-500 transition-colors">Úvod</Link></li>
                 <li><Link to="/sluzby" className="hover:text-orange-500 transition-colors">Naše služby</Link></li>
+                <li><Link to="/galerie" className="hover:text-orange-500 transition-colors">Galerie</Link></li>
                 <li><Link to="/cenik" className="hover:text-orange-500 transition-colors">Ceník</Link></li>
                 <li><button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-orange-500 transition-colors">Kontakt</button></li>
               </ul>
